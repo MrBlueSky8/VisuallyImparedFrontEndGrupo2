@@ -16,16 +16,19 @@ export class RutassegurasService {
   list() {
     return this.http.get<RutasSeguras[]>(this.url);
   }
-
   insert(r: RutasSeguras) {
     return this.http.post(this.url, r);
   }
-
   setList(listaNueva: RutasSeguras[]) {
     this.listacambio.next(listaNueva);
   }
-
   getList() {
     return this.listacambio.asObservable();
+  }
+  listId(id:number){
+    return this.http.get<RutasSeguras>(`${this.url}/${id}`)
+  }
+  update(r: RutasSeguras){
+    return this.http.put(this.url, r);
   }
 }

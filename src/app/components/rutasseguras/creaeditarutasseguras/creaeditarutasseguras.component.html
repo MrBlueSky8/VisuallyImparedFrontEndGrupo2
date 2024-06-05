@@ -1,1 +1,57 @@
-<p>creaeditarutasseguras works!</p>
+<div class="title-container"><h1>Registro de Rutas Seguras</h1></div>
+<div class="form-container">
+  <form [formGroup]="form" (submit)="aceptar()">
+
+    <!-- ID (solo en edición) -->
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Id</mat-label>
+      <input matInput formControlName="id" readonly/>
+    </mat-form-field>
+    <br />
+
+    <!-- Punto de Origen -->
+    <mat-form-field>
+      <mat-label>Punto de Origen</mat-label>
+      <input matInput formControlName="punto_origen" />
+      <mat-error *ngIf="form.get('punto_origen')?.hasError('required')">
+        El Punto de Origen es obligatorio.
+      </mat-error>
+    </mat-form-field>
+    <br />
+
+    <!-- Punto de Destino -->
+    <mat-form-field>
+      <mat-label>Punto de Destino</mat-label>
+      <input matInput formControlName="punto_destino" />
+      <mat-error *ngIf="form.get('punto_destino')?.hasError('required')">
+        El Punto de Destino es obligatorio.
+      </mat-error>
+    </mat-form-field>
+    <br />
+
+    <!-- Distancia -->
+    <mat-form-field>
+        <mat-label>Distancia</mat-label>
+        <input matInput formControlName="distancia" />
+        <mat-error *ngIf="form.get('distancia')?.hasError('required')">
+          La distancia es obligatoria.
+        </mat-error>
+    </mat-form-field>
+    <br />
+
+    <!-- Descripcion -->
+    <mat-form-field>
+      <mat-label>Descripción</mat-label>
+      <input matInput formControlName="descripcion" />
+      <mat-error *ngIf="form.get('descripcion')?.hasError('required')">
+        La descripción es obligatoria.
+      </mat-error>
+    </mat-form-field>
+    <br />
+
+    <!-- Botón Aceptar -->
+    <div class="button-container">
+      <button mat-raised-button color="primary">Aceptar</button>
+    </div>
+  </form>
+</div>
