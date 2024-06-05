@@ -45,7 +45,7 @@ export class CreaeditarutassegurasComponent implements OnInit{
     })
 
     this.form = this.formBuilber.group({
-      punto_origen:[''],
+      punto_origen:['', Validators.required],
       punto_destino: ['', Validators.required],
       distancia: ['', Validators.required],
       descripcion: ['', Validators.required],
