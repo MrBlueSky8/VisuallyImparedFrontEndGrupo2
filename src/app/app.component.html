@@ -6,9 +6,11 @@
   <button mat-button [matMenuTriggerFor]="menuRutasSeguras"><mat-icon>security</mat-icon>Rutas Seguras</button>
 
   <!-- Menú de Tipos de Evento -->
-  <button mat-button [matMenuTriggerFor]="menuTiposEvento"><mat-icon>alarm</mat-icon>Tipos de Evento</button>
+  <button mat-button [matMenuTriggerFor]="menuTiposEvento"><mat-icon>alarm</mat-icon>Tipos de Eventos</button>
 
-  
+  <!-- Menú de Tipos de Notificaciones -->
+  <button mat-button [matMenuTriggerFor]="menuTiposNotificacion"><mat-icon>notifications</mat-icon>Tipos de Notificaciones</button>
+
   <!-- Botón Home -->
   <button mat-button routerLink="/"><mat-icon>home</mat-icon>Home</button>
 </mat-toolbar>
@@ -25,10 +27,16 @@
   <button mat-menu-item routerLink="/rutasseguras"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
-<!-- Menú de Rutas Seguras -->
+<!-- Menú de Tipos de Eventos -->
 <mat-menu #menuTiposEvento="matMenu">
   <button mat-menu-item routerLink="/tiposdeevento/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
   <button mat-menu-item routerLink="/tiposdeevento"><mat-icon>list</mat-icon>Listar</button>
+</mat-menu>
+
+<!-- Menú de Tipos de Notificaciones -->
+<mat-menu #menuTiposNotificacion="matMenu">
+  <button mat-menu-item routerLink="/tiposdenotificacion/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/tiposdenotificacion"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <router-outlet></router-outlet>

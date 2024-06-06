@@ -1,0 +1,30 @@
+<div class="title-container">
+    <h1>{{ edicion ? 'Editar Tipo de Notificación' : 'Registrar Tipo de Notificación' }}</h1>
+  </div>
+  <div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+  
+      <!-- Código (solo en edición) -->
+      <mat-form-field *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="codigo" readonly/>
+      </mat-form-field>
+      <br />
+  
+      <!-- Tipo de Evento -->
+      <mat-form-field>
+        <mat-label>Tipo de Notificación</mat-label>
+        <input matInput formControlName="tipo_notificacion" required/>
+        <mat-error *ngIf="form.get('tipo_notificacion')?.hasError('required')">
+          El tipo de notificación es obligatoria.
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <br />
+  
+      <!-- Botón Aceptar -->
+      <div class="button-container">
+        <button mat-raised-button color="primary">Aceptar</button>
+      </div>
+    </form>
+  </div>

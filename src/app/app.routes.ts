@@ -5,6 +5,8 @@ import { RutassegurasComponent } from "./components/rutasseguras/rutasseguras.co
 import { CreaeditarutassegurasComponent } from "./components/rutasseguras/creaeditarutasseguras/creaeditarutasseguras.component";
 import { TiposdeeventoComponent } from "./components/tiposdeevento/tiposdeevento.component";
 import { CreaeditatiposdeeventoComponent } from "./components/tiposdeevento/creaeditatiposdeevento/creaeditatiposdeevento.component";
+import { TiposdenotificacionComponent } from "./components/tiposdenotificacion/tiposdenotificacion.component";
+import { CreaeditatiposdenotificacionComponent } from "./components/tiposdenotificacion/creaeditatiposdenotificacion/creaeditatiposdenotificacion.component";
 
 
 export const routes: Routes = [
@@ -47,6 +49,20 @@ export const routes: Routes = [
             },
             {
                 path:'detalle/:id', component:CreaeditatiposdeeventoComponent
+            }
+        ]
+    },
+    {
+        path:'tiposdenotificacion',component:TiposdenotificacionComponent,
+        children:[
+            {
+                path:'nuevo',component:CreaeditatiposdenotificacionComponent
+            },
+            {
+                path:'ediciones/:id', component:CreaeditatiposdenotificacionComponent
+            },
+            {
+                path:'detalle/:id', component:CreaeditatiposdenotificacionComponent
             }
         ]
     }
