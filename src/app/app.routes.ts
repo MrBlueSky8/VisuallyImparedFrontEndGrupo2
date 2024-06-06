@@ -7,6 +7,8 @@ import { TiposdeeventoComponent } from "./components/tiposdeevento/tiposdeevento
 import { CreaeditatiposdeeventoComponent } from "./components/tiposdeevento/creaeditatiposdeevento/creaeditatiposdeevento.component";
 import { TiposdenotificacionComponent } from "./components/tiposdenotificacion/tiposdenotificacion.component";
 import { CreaeditatiposdenotificacionComponent } from "./components/tiposdenotificacion/creaeditatiposdenotificacion/creaeditatiposdenotificacion.component";
+import { TiposdeusuarioComponent } from "./components/tiposdeusuario/tiposdeusuario.component";
+import { CreaeditatiposdeusuarioComponent } from "./components/tiposdeusuario/creaeditatiposdeusuario/creaeditatiposdeusuario.component";
 
 
 export const routes: Routes = [
@@ -46,9 +48,6 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id', component:CreaeditatiposdeeventoComponent
-            },
-            {
-                path:'detalle/:id', component:CreaeditatiposdeeventoComponent
             }
         ]
     },
@@ -60,9 +59,17 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id', component:CreaeditatiposdenotificacionComponent
+            }
+        ]
+    },
+    {
+        path:'tiposdeusuario',component:TiposdeusuarioComponent,
+        children:[
+            {
+                path:'nuevo',component:CreaeditatiposdeusuarioComponent
             },
             {
-                path:'detalle/:id', component:CreaeditatiposdenotificacionComponent
+                path:'ediciones/:id', component:CreaeditatiposdeusuarioComponent
             }
         ]
     }

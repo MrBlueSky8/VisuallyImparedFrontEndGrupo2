@@ -11,6 +11,9 @@
   <!-- Menú de Tipos de Notificaciones -->
   <button mat-button [matMenuTriggerFor]="menuTiposNotificacion"><mat-icon>notifications</mat-icon>Tipos de Notificaciones</button>
 
+  <!-- Menú de Tipos de Usuario -->
+  <button mat-button [matMenuTriggerFor]="menuTiposdeUsuario"><mat-icon>fingerprint</mat-icon>Tipos de Usuario</button>
+
   <!-- Botón Home -->
   <button mat-button routerLink="/"><mat-icon>home</mat-icon>Home</button>
 </mat-toolbar>
@@ -37,6 +40,12 @@
 <mat-menu #menuTiposNotificacion="matMenu">
   <button mat-menu-item routerLink="/tiposdenotificacion/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
   <button mat-menu-item routerLink="/tiposdenotificacion"><mat-icon>list</mat-icon>Listar</button>
+</mat-menu>
+
+<!-- Menú de Tipos de Usuario -->
+<mat-menu #menuTiposdeUsuario="matMenu">
+  <button mat-menu-item routerLink="/tiposdeusuario/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/tiposdeusuario"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <router-outlet></router-outlet>
