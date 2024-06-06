@@ -3,6 +3,8 @@ import { UsuariosComponent } from "./components/usuarios/usuarios.component";
 import { CreaeditausuarioComponent } from "./components/usuarios/creaeditausuario/creaeditausuario.component";
 import { RutassegurasComponent } from "./components/rutasseguras/rutasseguras.component";
 import { CreaeditarutassegurasComponent } from "./components/rutasseguras/creaeditarutasseguras/creaeditarutasseguras.component";
+import { TiposdeeventoComponent } from "./components/tiposdeevento/tiposdeevento.component";
+import { CreaeditatiposdeeventoComponent } from "./components/tiposdeevento/creaeditatiposdeevento/creaeditatiposdeevento.component";
 
 
 export const routes: Routes = [
@@ -31,6 +33,20 @@ export const routes: Routes = [
             },
             {
                 path:'detalle/:id', component:CreaeditarutassegurasComponent
+            }
+        ]
+    },
+    {
+        path:'tiposdeevento',component:TiposdeeventoComponent,
+        children:[
+            {
+                path:'nuevo',component:CreaeditatiposdeeventoComponent
+            },
+            {
+                path:'ediciones/:id', component:CreaeditatiposdeeventoComponent
+            },
+            {
+                path:'detalle/:id', component:CreaeditatiposdeeventoComponent
             }
         ]
     }

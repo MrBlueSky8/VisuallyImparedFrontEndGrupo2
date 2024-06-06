@@ -44,7 +44,7 @@ export class ListarrutassegurasComponent {
     })
     this.rS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);  
-      this.dataSource.paginator = this.paginator;    
+      this.dataSource.paginator = this.paginator;
     });
   }
   eliminar(id: number) {

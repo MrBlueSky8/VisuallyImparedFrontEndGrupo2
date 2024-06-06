@@ -5,6 +5,9 @@
   <!-- Menú de Rutas Seguras -->
   <button mat-button [matMenuTriggerFor]="menuRutasSeguras"><mat-icon>security</mat-icon>Rutas Seguras</button>
 
+  <!-- Menú de Tipos de Evento -->
+  <button mat-button [matMenuTriggerFor]="menuTiposEvento"><mat-icon>alarm</mat-icon>Tipos de Evento</button>
+
   
   <!-- Botón Home -->
   <button mat-button routerLink="/"><mat-icon>home</mat-icon>Home</button>
@@ -20,6 +23,12 @@
 <mat-menu #menuRutasSeguras="matMenu">
   <button mat-menu-item routerLink="/rutasseguras/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
   <button mat-menu-item routerLink="/rutasseguras"><mat-icon>list</mat-icon>Listar</button>
+</mat-menu>
+
+<!-- Menú de Rutas Seguras -->
+<mat-menu #menuTiposEvento="matMenu">
+  <button mat-menu-item routerLink="/tiposdeevento/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/tiposdeevento"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <router-outlet></router-outlet>
