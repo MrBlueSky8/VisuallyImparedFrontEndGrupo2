@@ -1,0 +1,31 @@
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  mat-toolbar button {
+    margin-right: 10px;
+  }
+  
+  mat-menu-item mat-icon {
+    margin-right: 8px;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+  
+  .title-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  button.mat-raised-button {
+    margin-top: 10px;
+  }
+  
+  .button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  

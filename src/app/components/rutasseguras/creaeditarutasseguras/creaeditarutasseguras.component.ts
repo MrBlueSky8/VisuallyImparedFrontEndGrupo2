@@ -28,6 +28,7 @@ export class CreaeditarutassegurasComponent implements OnInit{
   RutasSeguras: RutasSeguras = new RutasSeguras();
   id: number = 0;
   edicion:boolean = false;
+  detalle:boolean = false;
 
   constructor(
     private formBuilber: FormBuilder,
@@ -41,10 +42,13 @@ export class CreaeditarutassegurasComponent implements OnInit{
       this.id=data['id'];
       this.edicion=data['id']!=null;
       //llamar a metodo llene el formulario del registro a editar
+      this.detalle = data['id'] != null && this.route.snapshot.url.some(segment => segment.path === 'detalle');
+
       this.init()
     })
 
     this.form = this.formBuilber.group({
+      codigo:[''],
       punto_origen:['', Validators.required],
       punto_destino: ['', Validators.required],
       distancia: ['', Validators.required],
@@ -54,7 +58,7 @@ export class CreaeditarutassegurasComponent implements OnInit{
 
   aceptar(): void {
     if (this.form.valid) {
-      this.RutasSeguras.id = this.form.value.id;
+      this.RutasSeguras.id = this.form.value.codigo;
       this.RutasSeguras.punto_origen = this.form.value.punto_origen;
       this.RutasSeguras.punto_destino = this.form.value.punto_destino;
       this.RutasSeguras.distancia = this.form.value.distancia;
@@ -74,7 +78,7 @@ export class CreaeditarutassegurasComponent implements OnInit{
           });
         }
 
-      this.router.navigate(['usuarios']);
+      this.router.navigate(['rutasseguras']);
     }
   }
 
@@ -82,7 +86,7 @@ export class CreaeditarutassegurasComponent implements OnInit{
     if(this.edicion){
       this.rS.listId(this.id).subscribe((data)=>{
         this.form=new FormGroup({
-          id: new FormControl(data.id),
+          codigo: new FormControl(data.id),
           punto_origen: new FormControl(data.punto_origen),
           punto_destino: new FormControl(data.punto_destino),
           distancia: new FormControl(data.distancia),
@@ -90,5 +94,8 @@ export class CreaeditarutassegurasComponent implements OnInit{
         })
       })
     }
+  }
+  volver(): void {
+    this.router.navigate(['rutasseguras']);
   }
 }

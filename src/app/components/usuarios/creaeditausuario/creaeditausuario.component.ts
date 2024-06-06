@@ -28,6 +28,7 @@ export class CreaeditausuarioComponent implements OnInit{
   usuario: Usuario = new Usuario();
   id: number = 0;
   edicion:boolean = false;
+  detalle:boolean = false;
 
   listaGeneros: { value: string; viewValue: string }[] = [
     { value: 'Masculino', viewValue: 'Masculino' },
@@ -45,6 +46,8 @@ export class CreaeditausuarioComponent implements OnInit{
       this.id=data['id'];
       this.edicion=data['id']!=null;
       //llamar a metodo llene el formulario del registro a editar
+      this.detalle = data['id'] != null && this.route.snapshot.url.some(segment => segment.path === 'detalle');
+    
       this.init()
     })
 
@@ -64,10 +67,12 @@ export class CreaeditausuarioComponent implements OnInit{
     if (this.form.valid) {
       this.usuario.idUsuario = this.form.value.codigo;
       this.usuario.nombre = this.form.value.nombre;
-      this.usuario.apellido = this.form.value.genero;
-      this.usuario.genero = this.form.value.sinopsis;
-      this.usuario.email = this.form.value.duracion;
-      this.usuario.ultima_ubicacion = this.form.value.anio;
+      this.usuario.apellido = this.form.value.apellido;
+      this.usuario.genero = this.form.value.genero;
+      this.usuario.email = this.form.value.email;
+      this.usuario.ultima_ubicacion = this.form.value.ultima_ubicacion;
+      this.usuario.password = this.form.value.password;
+      this.usuario.enabled = this.form.value.enabled;
       if(this.edicion){
           this.uS.update(this.usuario).subscribe((data) => {
             this.uS.list().subscribe((data) => {
@@ -102,5 +107,9 @@ export class CreaeditausuarioComponent implements OnInit{
         })
       })
     }
+  }
+  
+  volver(): void {
+    this.router.navigate(['usuarios']);
   }
 }

@@ -1,20 +1,22 @@
-<div class="title-container"><h1>Registro de Rutas Seguras</h1></div>
+<div class="title-container">
+  <h1>{{ detalle ? 'Detalle de la Ruta Segura' : 'Registro de Rutas Seguras' }}</h1>
+</div>
 <div class="form-container">
-  <form [formGroup]="form" (submit)="aceptar()">
+  <form [formGroup]="form" (ngSubmit)="aceptar()">
 
-    <!-- ID (solo en edición) -->
-    <mat-form-field *ngIf="edicion">
-      <mat-label>Id</mat-label>
-      <input matInput formControlName="id" readonly/>
+    <!-- Código (solo en edición) -->
+    <mat-form-field *ngIf="edicion || detalle">
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="codigo" readonly/>
     </mat-form-field>
     <br />
 
     <!-- Punto de Origen -->
     <mat-form-field>
       <mat-label>Punto de Origen</mat-label>
-      <input matInput formControlName="punto_origen" />
+      <input matInput formControlName="punto_origen" [readonly]="detalle"/>
       <mat-error *ngIf="form.get('punto_origen')?.hasError('required')">
-        El Punto de Origen es obligatorio.
+        El punto de origen es obligatorio.
       </mat-error>
     </mat-form-field>
     <br />
@@ -22,36 +24,37 @@
     <!-- Punto de Destino -->
     <mat-form-field>
       <mat-label>Punto de Destino</mat-label>
-      <input matInput formControlName="punto_destino" />
+      <input matInput formControlName="punto_destino" [readonly]="detalle"/>
       <mat-error *ngIf="form.get('punto_destino')?.hasError('required')">
-        El Punto de Destino es obligatorio.
+        El punto de destino es obligatorio.
       </mat-error>
     </mat-form-field>
     <br />
 
     <!-- Distancia -->
     <mat-form-field>
-        <mat-label>Distancia</mat-label>
-        <input matInput formControlName="distancia" />
-        <mat-error *ngIf="form.get('distancia')?.hasError('required')">
-          La distancia es obligatoria.
-        </mat-error>
+      <mat-label>Distancia</mat-label>
+      <input matInput formControlName="distancia" type="number" [readonly]="detalle"/>
+      <mat-error *ngIf="form.get('distancia')?.hasError('required')">
+        La distancia es obligatoria.
+      </mat-error>
     </mat-form-field>
     <br />
 
-    <!-- Descripcion -->
+    <!-- Descripción -->
     <mat-form-field>
       <mat-label>Descripción</mat-label>
-      <input matInput formControlName="descripcion" />
+      <textarea matInput formControlName="descripcion" [readonly]="detalle"></textarea>
       <mat-error *ngIf="form.get('descripcion')?.hasError('required')">
         La descripción es obligatoria.
       </mat-error>
     </mat-form-field>
     <br />
 
-    <!-- Botón Aceptar -->
+    <!-- Botones Aceptar y Volver -->
     <div class="button-container">
-      <button mat-raised-button color="primary">Aceptar</button>
+      <button mat-raised-button color="primary" *ngIf="!detalle">Aceptar</button>
+      <button mat-raised-button color="accent" (click)="volver()">Volver</button>
     </div>
   </form>
 </div>

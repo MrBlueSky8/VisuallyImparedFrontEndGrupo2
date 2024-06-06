@@ -1,9 +1,9 @@
-<div class="title-container"><h1>Registro de Usuarios</h1></div>
+<div class="title-container"><h1>{{ detalle ? 'Detalle del Usuario' : 'Registro de Usuarios' }}</h1></div>
 <div class="form-container">
   <form [formGroup]="form" (submit)="aceptar()">
 
     <!-- Código (solo en edición) -->
-    <mat-form-field *ngIf="edicion">
+    <mat-form-field *ngIf="edicion || detalle">
       <mat-label>Código</mat-label>
       <input matInput formControlName="codigo" readonly/>
     </mat-form-field>
@@ -12,7 +12,7 @@
     <!-- Nombre -->
     <mat-form-field>
       <mat-label>Nombre</mat-label>
-      <input matInput formControlName="nombre" />
+      <input matInput formControlName="nombre" [readonly]="detalle"/>
       <mat-error *ngIf="form.get('nombre')?.hasError('required')">
         El nombre es obligatorio.
       </mat-error>
@@ -22,7 +22,7 @@
     <!-- Apellido -->
     <mat-form-field>
       <mat-label>Apellido</mat-label>
-      <input matInput formControlName="apellido" />
+      <input matInput formControlName="apellido" [readonly]="detalle"/>
       <mat-error *ngIf="form.get('apellido')?.hasError('required')">
         El apellido es obligatorio.
       </mat-error>
@@ -46,7 +46,7 @@
     <!-- Email -->
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input matInput formControlName="email" />
+      <input matInput formControlName="email" [readonly]="detalle"/>
       <mat-error *ngIf="form.get('email')?.hasError('required')">
         El email es obligatorio.
       </mat-error>
@@ -56,7 +56,7 @@
     <!-- Última Ubicación -->
     <mat-form-field>
       <mat-label>Última Ubicación</mat-label>
-      <input matInput formControlName="ultima_ubicacion" />
+      <input matInput formControlName="ultima_ubicacion" [readonly]="detalle"/>
       <mat-error *ngIf="form.get('ultima_ubicacion')?.hasError('required')">
         La última ubicación es obligatoria.
       </mat-error>
@@ -66,7 +66,7 @@
     <!-- Contraseña -->
     <mat-form-field>
       <mat-label>Contraseña</mat-label>
-      <input matInput formControlName="password" type="password" />
+      <input matInput formControlName="password" type="password" [readonly]="detalle"/>
       <mat-error *ngIf="form.get('password')?.hasError('required')">
         La contraseña es obligatoria.
       </mat-error>
@@ -88,7 +88,8 @@
 
     <!-- Botón Aceptar -->
     <div class="button-container">
-      <button mat-raised-button color="primary">Aceptar</button>
+      <button mat-raised-button color="primary" *ngIf="!detalle">Aceptar</button>
+      <button mat-raised-button color="accent" (click)="volver()">Volver</button>
     </div>
   </form>
 </div>

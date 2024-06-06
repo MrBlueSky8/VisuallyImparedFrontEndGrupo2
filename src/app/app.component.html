@@ -1,17 +1,25 @@
-<mat-toolbar color="accent">
-  <mat-icon>menu</mat-icon>
-  <button mat-button [matMenuTriggerFor]="menuUsuario">Usuario</button>  
+<mat-toolbar color="primary">
+   <!-- Menú de Usuarios -->
+  <button mat-button [matMenuTriggerFor]="menuUsuario"><mat-icon>person</mat-icon>Usuario</button>  
+
+  <!-- Menú de Rutas Seguras -->
+  <button mat-button [matMenuTriggerFor]="menuRutasSeguras"><mat-icon>security</mat-icon>Rutas Seguras</button>
+
+  
+  <!-- Botón Home -->
+  <button mat-button routerLink="/"><mat-icon>home</mat-icon>Home</button>
 </mat-toolbar>
+
+<!-- Menú de Usuario -->
 <mat-menu #menuUsuario="matMenu">
-  <button mat-menu-item routerLink="/usuarios">Listar</button>
-  <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/usuarios/nuevo"><mat-icon>person_add</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/usuarios"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
-<mat-toolbar color="accent">
-  <mat-icon>menu</mat-icon>
-  <button mat-button [matMenuTriggerFor]="menuRutasSeguras">RutasSeguras</button>  
-</mat-toolbar>
+
+<!-- Menú de Rutas Seguras -->
 <mat-menu #menuRutasSeguras="matMenu">
-  <button mat-menu-item routerLink="/rutasseguras">Listar</button>
-  <button mat-menu-item routerLink="/rutasseguras/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/rutasseguras/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/rutasseguras"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
+
 <router-outlet></router-outlet>

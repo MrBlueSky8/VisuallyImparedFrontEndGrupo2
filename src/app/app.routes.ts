@@ -14,6 +14,9 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id', component:CreaeditausuarioComponent
+            },
+            {
+                path:'detalle/:id', component:CreaeditausuarioComponent
             }
         ],
     },
@@ -25,6 +28,9 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id', component:CreaeditarutassegurasComponent
+            },
+            {
+                path:'detalle/:id', component:CreaeditarutassegurasComponent
             }
         ]
     }
