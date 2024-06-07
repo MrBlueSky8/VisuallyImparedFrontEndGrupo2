@@ -17,6 +17,9 @@
   <!-- Menú de Eventos -->
   <button mat-button [matMenuTriggerFor]="menuEventos"><mat-icon>event</mat-icon>Eventos</button>
 
+  <!-- Menú de Notificaciones -->
+  <button mat-button [matMenuTriggerFor]="menuNotificaciones"><mat-icon>notifications</mat-icon>Notificaciones</button>
+
   <!-- Botón Home -->
   <button mat-button routerLink="/"><mat-icon>home</mat-icon>Home</button>
 </mat-toolbar>
@@ -56,4 +59,11 @@
   <button mat-menu-item routerLink="/eventos/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
   <button mat-menu-item routerLink="/eventos"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
+
+<!-- Menú de Notificaciones -->
+<mat-menu #menuNotificaciones="matMenu">
+  <button mat-menu-item routerLink="/notificaciones/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/notificaciones"><mat-icon>list</mat-icon>Listar</button>
+</mat-menu>
+
 <router-outlet></router-outlet>
