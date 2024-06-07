@@ -14,6 +14,9 @@
   <!-- Menú de Tipos de Usuario -->
   <button mat-button [matMenuTriggerFor]="menuTiposdeUsuario"><mat-icon>fingerprint</mat-icon>Tipos de Usuario</button>
 
+  <!-- Menú de Eventos -->
+  <button mat-button [matMenuTriggerFor]="menuEventos"><mat-icon>event</mat-icon>Eventos</button>
+
   <!-- Botón Home -->
   <button mat-button routerLink="/"><mat-icon>home</mat-icon>Home</button>
 </mat-toolbar>
@@ -48,4 +51,9 @@
   <button mat-menu-item routerLink="/tiposdeusuario"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
+<!-- Menú de Eventos -->
+<mat-menu #menuEventos="matMenu">
+  <button mat-menu-item routerLink="/eventos/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/eventos"><mat-icon>list</mat-icon>Listar</button>
+</mat-menu>
 <router-outlet></router-outlet>

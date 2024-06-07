@@ -9,6 +9,8 @@ import { TiposdenotificacionComponent } from "./components/tiposdenotificacion/t
 import { CreaeditatiposdenotificacionComponent } from "./components/tiposdenotificacion/creaeditatiposdenotificacion/creaeditatiposdenotificacion.component";
 import { TiposdeusuarioComponent } from "./components/tiposdeusuario/tiposdeusuario.component";
 import { CreaeditatiposdeusuarioComponent } from "./components/tiposdeusuario/creaeditatiposdeusuario/creaeditatiposdeusuario.component";
+import { EventosComponent } from "./components/eventos/eventos.component";
+import { CreaeditaeventosComponent } from "./components/eventos/creaeditaeventos/creaeditaeventos.component";
 
 
 export const routes: Routes = [
@@ -70,6 +72,17 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id', component:CreaeditatiposdeusuarioComponent
+            }
+        ]
+    },
+    {
+        path:'eventos',component:EventosComponent,
+        children:[
+            {
+                path:'nuevo',component:CreaeditaeventosComponent
+            },
+            {
+                path:'ediciones/:id', component:CreaeditaeventosComponent
             }
         ]
     }
