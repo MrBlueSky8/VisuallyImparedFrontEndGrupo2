@@ -15,9 +15,22 @@ import { NotificacionesComponent } from "./components/notificaciones/notificacio
 import { CreaeditanotificacionesComponent } from "./components/notificaciones/creaeditanotificaciones/creaeditanotificaciones.component";
 import { HistorialnavegacionComponent } from "./components/historialnavegacion/historialnavegacion.component";
 import { CreaeditahistorialnavegacionComponent } from "./components/historialnavegacion/creaeditahistorialnavegacion/creaeditahistorialnavegacion.component";
+import { LoginComponent } from "./components/login/login.component";
+import { segGuard } from "./guard/seguridad.guard";
+import { HomeComponent } from "./components/home/home.component";
 
 
 export const routes: Routes = [
+
+    {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
+    },
     {
         path:'usuarios',component:UsuariosComponent,
         children:[
@@ -31,6 +44,7 @@ export const routes: Routes = [
                 path:'detalle/:id', component:CreaeditausuarioComponent
             }
         ],
+        canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'rutasseguras',component:RutassegurasComponent,
@@ -44,7 +58,8 @@ export const routes: Routes = [
             {
                 path:'detalle/:id', component:CreaeditarutassegurasComponent
             }
-        ]
+        ],
+        canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'tiposdeevento',component:TiposdeeventoComponent,
@@ -55,7 +70,8 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id', component:CreaeditatiposdeeventoComponent
             }
-        ]
+        ],
+        canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'tiposdenotificacion',component:TiposdenotificacionComponent,
@@ -66,7 +82,8 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id', component:CreaeditatiposdenotificacionComponent
             }
-        ]
+        ],
+        canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'tiposdeusuario',component:TiposdeusuarioComponent,
@@ -77,7 +94,8 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id', component:CreaeditatiposdeusuarioComponent
             }
-        ]
+        ],
+        canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'eventos',component:EventosComponent,
@@ -88,7 +106,8 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id', component:CreaeditaeventosComponent
             }
-        ]
+        ],
+        canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'notificaciones',component:NotificacionesComponent,
@@ -99,7 +118,8 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id', component:CreaeditanotificacionesComponent
             }
-        ]
+        ],
+        canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
     },
     {
         path:'historialnavegacion',component:HistorialnavegacionComponent,
@@ -110,6 +130,12 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id', component:CreaeditahistorialnavegacionComponent
             }
-        ]
-    }
+        ],
+        canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
+    },
+    {
+      path: 'homes',
+      component: HomeComponent,
+      canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
+    },
 ];
