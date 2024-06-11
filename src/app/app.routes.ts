@@ -13,6 +13,8 @@ import { EventosComponent } from "./components/eventos/eventos.component";
 import { CreaeditaeventosComponent } from "./components/eventos/creaeditaeventos/creaeditaeventos.component";
 import { NotificacionesComponent } from "./components/notificaciones/notificaciones.component";
 import { CreaeditanotificacionesComponent } from "./components/notificaciones/creaeditanotificaciones/creaeditanotificaciones.component";
+import { HistorialnavegacionComponent } from "./components/historialnavegacion/historialnavegacion.component";
+import { CreaeditahistorialnavegacionComponent } from "./components/historialnavegacion/creaeditahistorialnavegacion/creaeditahistorialnavegacion.component";
 
 
 export const routes: Routes = [
@@ -96,6 +98,17 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id', component:CreaeditanotificacionesComponent
+            }
+        ]
+    },
+    {
+        path:'historialnavegacion',component:HistorialnavegacionComponent,
+        children:[
+            {
+                path:'nuevo',component:CreaeditahistorialnavegacionComponent
+            },
+            {
+                path:'ediciones/:id', component:CreaeditahistorialnavegacionComponent
             }
         ]
     }

@@ -19,6 +19,9 @@
 
   <!-- Menú de Notificaciones -->
   <button mat-button [matMenuTriggerFor]="menuNotificaciones"><mat-icon>notifications</mat-icon>Notificaciones</button>
+  
+  <!-- Menú de Historial de Navegacion -->
+  <button mat-button [matMenuTriggerFor]="menuHistorial"><mat-icon>history</mat-icon>Historial de Navegacion</button>
 
   <!-- Botón Home -->
   <button mat-button routerLink="/"><mat-icon>home</mat-icon>Home</button>
@@ -64,6 +67,12 @@
 <mat-menu #menuNotificaciones="matMenu">
   <button mat-menu-item routerLink="/notificaciones/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
   <button mat-menu-item routerLink="/notificaciones"><mat-icon>list</mat-icon>Listar</button>
+</mat-menu>
+
+<!-- Menú de Historial -->
+<mat-menu #menuHistorial="matMenu">
+  <button mat-menu-item routerLink="/historialnavegacion/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/historialnavegacion"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <router-outlet></router-outlet>
