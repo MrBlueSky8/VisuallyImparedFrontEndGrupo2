@@ -1,0 +1,140 @@
+/* Estilos generales para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+mat-header-cell, mat-cell {
+  padding: 16px;
+  text-align: left;
+  font-size: 16px;
+}
+
+mat-header-cell {
+  background-color: #3f51b5;
+  color: #fff;
+  font-weight: bold;
+}
+
+mat-cell {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+mat-row:hover {
+  background-color: #e3f2fd;
+}
+
+/* Estilos para botones dentro de la tabla */
+button.mat-raised-button {
+  margin-right: 8px;
+}
+
+button.mat-raised-button.mat-warn {
+  background-color: #f44336;
+  color: white;
+}
+
+button.mat-raised-button.mat-accent {
+  background-color: #ff4081;
+  color: white;
+}
+
+button.mat-raised-button mat-icon {
+  margin-right: 4px;
+}
+
+/* Contenedor general */
+.container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+/* Título de la página */
+.title-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title-container h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Paginador */
+mat-paginator {
+  background-color: #e0f7fa;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para las celdas del formulario en modo detalle */
+.form-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+button.mat-raised-button.mat-primary {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button-container button {
+  margin: 0 8px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  mat-header-cell, mat-cell {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .title-container h1 {
+    font-size: 20px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button-container button {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  mat-header-cell, mat-cell {
+    font-size: 12px;
+  }
+
+  .title-container h1 {
+    font-size: 18px;
+  }
+
+  .container {
+    padding: 5px;
+  }
+}

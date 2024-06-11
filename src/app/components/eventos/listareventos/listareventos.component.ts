@@ -36,9 +36,9 @@ export class ListareventosComponent {
     'accion01',
     'accion02'
   ];
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
   dataSource: MatTableDataSource<Eventos> = new MatTableDataSource();
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private eS:EventosService) {}
   ngOnInit(): void {
     this.eS.list().subscribe((data)=>{
