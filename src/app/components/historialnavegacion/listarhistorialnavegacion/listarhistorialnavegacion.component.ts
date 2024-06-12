@@ -24,7 +24,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './listarhistorialnavegacion.component.html',
   styleUrl: './listarhistorialnavegacion.component.css'
 })
-export class ListarhistorialnavegacionComponent implements AfterViewInit{
+export class ListarhistorialnavegacionComponent {
   displayedColumns: string[] = [
     'id',
     'usuario',
@@ -42,16 +42,41 @@ export class ListarhistorialnavegacionComponent implements AfterViewInit{
   constructor(private nS:HistorialnavegacionService) {}
   ngOnInit(): void {
     this.nS.list().subscribe((data)=>{
+      data.forEach(historialnavegacion => {
+        if (typeof historialnavegacion.fechayhora_inicio === 'string') {
+          historialnavegacion.fechayhora_inicio = new Date(historialnavegacion.fechayhora_inicio);
+        }
+      });
+      this.dataSource=new MatTableDataSource(data)
+      this.dataSource.paginator = this.paginator;
+    })
+    this.nS.list().subscribe((data)=>{
+      data.forEach(historialnavegacion => {
+        if (typeof historialnavegacion.fechayhora_destino === 'string') {
+          historialnavegacion.fechayhora_destino = new Date(historialnavegacion.fechayhora_destino);
+        }
+      });
       this.dataSource=new MatTableDataSource(data)
       this.dataSource.paginator = this.paginator;
     })
     this.nS.getList().subscribe((data) => {
+      data.forEach(historialnavegacion => {
+        if (typeof historialnavegacion.fechayhora_inicio === 'string') {
+          historialnavegacion.fechayhora_inicio = new Date(historialnavegacion.fechayhora_inicio);
+        }
+      });
       this.dataSource = new MatTableDataSource(data);   
       this.dataSource.paginator = this.paginator;   
     });
-  }
-  ngAfterViewInit(): void {
-    this.dataSource.paginator=this.paginator;
+    this.nS.getList().subscribe((data) => {
+      data.forEach(historialnavegacion => {
+        if (typeof historialnavegacion.fechayhora_destino === 'string') {
+          historialnavegacion.fechayhora_destino = new Date(historialnavegacion.fechayhora_destino);
+        }
+      });
+      this.dataSource = new MatTableDataSource(data);   
+      this.dataSource.paginator = this.paginator;   
+    });
   }
   eliminar(id: number) {
     this.nS.eliminar(id).subscribe((data) => {

@@ -40,24 +40,35 @@
 
     <!-- Fechayhora_inicio -->
       <mat-form-field appearance="fill" class="example-full-width">
-        <input matInput placeholder="Ingrese fecha de inicio" [matDatepicker]="pickerInicio" formControlName="fechayhora_inicio" />
+        <input matInput placeholder="Ingrese fecha de inicio" [matDatepicker]="pickerInicio" formControlName="fechainicio" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
         <mat-datepicker #pickerInicio></mat-datepicker>
         <mat-error *ngIf="form.get('fechayhora_inicio')?.hasError('required')">La fecha de inicio es obligatoria.</mat-error>
       </mat-form-field>
       <br />
+      <mat-form-field appearance="fill" class="example-full-width">
+        <input matInput placeholder="Ingrese hora" formControlName="horainicio" />
+        <mat-hint>HH:MM</mat-hint>
+        <mat-error *ngIf="form.get('horainicio')?.hasError('required')">La hora es obligatoria.</mat-error>
+      </mat-form-field>
+      <br />
 
       <!-- Fechayhora_destino -->
       <mat-form-field appearance="fill" class="example-full-width">
-        <input matInput placeholder="Ingrese fecha de destino" [matDatepicker]="pickerDestino" formControlName="fechayhora_destino" />
+        <input matInput placeholder="Ingrese fecha de destino" [matDatepicker]="pickerDestino" formControlName="fechadestino" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="pickerDestino"></mat-datepicker-toggle>
         <mat-datepicker #pickerDestino></mat-datepicker>
         <mat-error *ngIf="form.get('fechayhora_destino')?.hasError('required')">La fecha de destino es obligatoria.</mat-error>
       </mat-form-field>
       <br />
-  
+      <mat-form-field appearance="fill" class="example-full-width">
+        <input matInput placeholder="Ingrese hora" formControlName="horadestino" />
+        <mat-hint>HH:MM</mat-hint>
+        <mat-error *ngIf="form.get('horadestino')?.hasError('required')">La hora es obligatoria.</mat-error>
+      </mat-form-field>
+      <br />
       <!-- Finalizado -->
       <mat-form-field>
         <mat-label>Estado</mat-label>
