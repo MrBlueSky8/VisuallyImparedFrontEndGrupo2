@@ -70,8 +70,8 @@
       <mat-form-field>
         <mat-label>Estado</mat-label>
         <mat-select formControlName="estado">
-            <mat-option [value]="true">Habilitado</mat-option>
-            <mat-option [value]="false">No Habilitado</mat-option>
+            <mat-option [value]="true">Activo</mat-option>
+            <mat-option [value]="false">Inactivo</mat-option>
           </mat-select>
           <mat-error *ngIf="form.get('estado')?.hasError('required')">
             El estado es obligatorio.
