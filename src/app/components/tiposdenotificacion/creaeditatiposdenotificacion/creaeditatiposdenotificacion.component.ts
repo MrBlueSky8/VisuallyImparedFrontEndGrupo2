@@ -79,7 +79,7 @@ export class CreaeditatiposdenotificacionComponent implements OnInit {
       this.tS.listId(this.id).subscribe((data)=>{
         this.form=new FormGroup({
           codigo: new FormControl(data.id),
-          tipo_de_evento: new FormControl(data.tipo_notificacion),
+          tipo_notificacion: new FormControl(data.tipo_notificacion),
         })
       })
     }
