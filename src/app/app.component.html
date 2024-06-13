@@ -23,6 +23,9 @@
   <!-- Menú de Historial de Navegacion -->
   <button mat-button [matMenuTriggerFor]="menuHistorial"><mat-icon>history</mat-icon>Historial de Navegacion</button>
 
+  <!-- Menú de Comentarios Valoraciones Rutas -->
+  <button mat-button [matMenuTriggerFor]="menuCValoracionRutas"><mat-icon>history</mat-icon>Comentarios/Valoraciones Rutas</button>
+
   <!-- Menú de Cerrar sesion -->
   <button mat-button [matMenuTriggerFor]="menuSalir">Sesion</button>
 
@@ -78,6 +81,12 @@
 <mat-menu #menuHistorial="matMenu">
   <button mat-menu-item routerLink="/historialnavegacion/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
   <button mat-menu-item routerLink="/historialnavegacion"><mat-icon>list</mat-icon>Listar</button>
+</mat-menu>
+
+<!-- Menú de Comentarios Valoraciones Rutas -->
+<mat-menu #menuCValoracionRutas="matMenu">
+  <button mat-menu-item routerLink="/comentariosvaloracionesrutas/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="/comentariosvaloracionesrutas"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <!-- Menú de Cerrar Login -->
