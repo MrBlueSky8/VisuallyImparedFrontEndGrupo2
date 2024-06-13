@@ -1,1 +1,71 @@
-<p>listarcomentariosvaloracionesrutas works!</p>
+<div class="container">
+    <div class="title-container">
+      <h1 class="title">Listado de Comentarios y Valoraciones </h1>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Valoracion Column -->
+      <ng-container matColumnDef="valoracion">
+        <th mat-header-cell *matHeaderCellDef> Valoracion </th>
+        <td mat-cell *matCellDef="let element"> {{element.valoracion}} </td>
+      </ng-container>
+  
+      <!-- Comentario Column -->
+      <ng-container matColumnDef="comentario">
+        <th mat-header-cell *matHeaderCellDef> Comentario </th>
+        <td mat-cell *matCellDef="let element"> {{element.comentario}} </td>
+      </ng-container>
+  
+      <!-- historialnavegacionid Column -->
+      <ng-container matColumnDef="historialnavegacionid">
+        <th mat-header-cell *matHeaderCellDef> Historial Navegacion </th>
+        <td mat-cell *matCellDef="let element"> {{element.historialnavegacionid.rutas_seguras.descripcion}} </td>
+      </ng-container>
+
+      <!-- Usuario Column -->
+      <ng-container matColumnDef="usuarioregistrado">
+        <th mat-header-cell *matHeaderCellDef> Usuario Registrado </th>
+        <td mat-cell *matCellDef="let element"> {{element.historialnavegacionid.usuario.email}} </td>
+      </ng-container>
+
+      <!-- Ver a detalle Column -->
+    <ng-container matColumnDef="verdetalle">
+        <th mat-header-cell *matHeaderCellDef>Ver a detalle</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="warn" [routerLink]="['detalle', element.id]">
+            <mat-icon>extension</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <!-- Accion01 Column -->
+      <ng-container matColumnDef="accion01">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="accent" [routerLink]="['ediciones', element.id]">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <!-- Accion02 Column -->
+      <ng-container matColumnDef="accion02">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="warn" (click)="eliminar(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  </div>
