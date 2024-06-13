@@ -1,1 +1,53 @@
-<p>creaeditacomentariosvaloracionesrutas works!</p>
+<div class="title-container">
+    <h1>{{ edicion ? 'Editar Comentario/Valoración' : 'Registrar Comentario/Valoración' }}</h1>
+  </div>
+  <div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+      <!-- Código (solo en edición) -->
+      <mat-form-field *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="codigo" readonly />
+      </mat-form-field>
+      <br />
+  
+      <!-- Valoración -->
+      <mat-form-field>
+        <mat-label>Valoración</mat-label>
+        <input matInput type="number" formControlName="valoracion" required />
+        <mat-error *ngIf="form.get('valoracion')?.hasError('required')">
+          La valoración es obligatoria.
+        </mat-error>
+      </mat-form-field>
+      <br />
+  
+      <!-- Comentario -->
+      <mat-form-field>
+        <mat-label>Comentario</mat-label>
+        <textarea matInput formControlName="comentario" required></textarea>
+        <mat-error *ngIf="form.get('comentario')?.hasError('required')">
+          El comentario es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br />
+  
+      <!-- Historial de Navegación -->
+      <mat-form-field>
+        <mat-label>Historial de Navegación</mat-label>
+        <mat-select formControlName="historialnavegacionid" required>
+          <mat-option *ngFor="let historial of historialesNavegacion" [value]="historial.id">
+            {{ historial.detalles }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('historialnavegacionid')?.hasError('required')">
+          El historial de navegación es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br />
+  
+      <!-- Botón Aceptar -->
+      <div class="button-container">
+        <button mat-raised-button color="primary" [disabled]="detalle">Aceptar</button>
+        <button mat-raised-button color="accent" (click)="volver()">Volver</button>
+      </div>
+    </form>
+  </div>
