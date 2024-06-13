@@ -146,7 +146,10 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id', component:CreaeditacomentariosvaloracionesrutasComponent
-            }
+            },
+            {
+                path:'detalle/:id', component:CreaeditacomentariosvaloracionesrutasComponent
+            }   
         ],
         canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
     },
