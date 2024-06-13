@@ -18,6 +18,8 @@ import { CreaeditahistorialnavegacionComponent } from "./components/historialnav
 import { LoginComponent } from "./components/login/login.component";
 import { segGuard } from "./guard/seguridad.guard";
 import { HomeComponent } from "./components/home/home.component";
+import { ComentariosvaloracionesrutasComponent } from "./components/comentariosvaloracionesrutas/comentariosvaloracionesrutas.component";
+import { CreaeditacomentariosvaloracionesrutasComponent } from "./components/comentariosvaloracionesrutas/creaeditacomentariosvaloracionesrutas/creaeditacomentariosvaloracionesrutas.component";
 
 
 export const routes: Routes = [
@@ -132,6 +134,18 @@ export const routes: Routes = [
             },
             {
                 path:'detalle/:id', component:CreaeditahistorialnavegacionComponent
+            }
+        ],
+        canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
+    },
+    {
+        path:'comentariosvaloracionesrutas',component:ComentariosvaloracionesrutasComponent,
+        children:[
+            {
+                path:'nuevo',component:CreaeditacomentariosvaloracionesrutasComponent
+            },
+            {
+                path:'ediciones/:id', component:CreaeditacomentariosvaloracionesrutasComponent
             }
         ],
         canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
