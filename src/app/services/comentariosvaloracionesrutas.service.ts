@@ -9,7 +9,7 @@ const base_url = environment.base;
   providedIn: 'root'
 })
 export class ComentariosvaloracionesrutasService {
-  private url = `${base_url}/rutas_seguras`;
+  private url = `${base_url}/comentariosvaloracionesrutas`;
   private listacambio = new Subject<ComentariosValoracionesRutas[]>();
   constructor(private http: HttpClient) {}
 
