@@ -27,12 +27,11 @@ import { CommonModule } from '@angular/common';
 export class ListarhistorialnavegacionComponent {
   displayedColumns: string[] = [
     'id',
-    'usuario',
     'rutas_seguras',
     'fechayhora_inicio',
     'fechayhora_destino',
     'finalizado',
-    'detalles',
+    'verdetalle',
     'accion01',
     'accion02'
   ];

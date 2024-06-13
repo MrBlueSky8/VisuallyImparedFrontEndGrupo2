@@ -34,6 +34,7 @@ export class CreaeditahistorialnavegacionComponent implements OnInit{
   HistorialNavegacion: HistorialNavegacion = new HistorialNavegacion();
   id: number = 0;
   edicion:boolean = false;
+  detalle:boolean = false;
   Rutas_seguras: RutasSeguras[] = [];
   usuarios: Usuario[] = [];
 
@@ -51,6 +52,7 @@ export class CreaeditahistorialnavegacionComponent implements OnInit{
       this.id=data['id'];
       this.edicion=data['id']!=null;
       //llamar a metodo llene el formulario del registro a editar
+      this.detalle = data['id'] != null && this.route.snapshot.url.some(segment => segment.path === 'detalle');
 
       this.init()
     })
@@ -119,21 +121,21 @@ export class CreaeditahistorialnavegacionComponent implements OnInit{
 
   init(){
     if(this.edicion){
-      this.hS.listId(this.id).subscribe((data)=>{
+      this.hS.listId(this.id).subscribe((data) => {
         if (data.fechayhora_inicio) {
           const fechayhora_inicio = new Date(data.fechayhora_inicio);
           const fechayhora_destino = new Date(data.fechayhora_destino);
-          this.form=new FormGroup({
-            codigo: new FormControl(data.id),
-            user_id: new FormControl(data.usuario.idUsuario),
-            rutas_seguras_id: new FormControl(data.rutas_seguras.id),
-            fechainicio: new FormControl(fechayhora_inicio.toISOString().split('T')[0]), // Formatea la fecha
-            horainicio: new FormControl(fechayhora_inicio.toTimeString().split(' ')[0]), // Formatea la hora
-            fechadestino: new FormControl(fechayhora_destino.toISOString().split('T')[0]), // Formatea la fecha
-            horadestino: new FormControl(fechayhora_destino.toTimeString().split(' ')[0]), // Formatea la hora
-            finalizado: new FormControl(data.finalizado),
-            detalles: new FormControl(data.detalles)
-        });
+          this.form = new FormGroup({
+            codigo: new FormControl({ value: data.id, disabled: this.detalle }),
+            user_id: new FormControl({ value: data.usuario.idUsuario, disabled: this.detalle }),
+            rutas_seguras_id: new FormControl({ value: data.rutas_seguras.id, disabled: this.detalle }),
+            fechainicio: new FormControl({ value: fechayhora_inicio.toISOString().split('T')[0], disabled: this.detalle }),
+            horainicio: new FormControl({ value: fechayhora_inicio.toTimeString().split(' ')[0], disabled: this.detalle }),
+            fechadestino: new FormControl({ value: fechayhora_destino.toISOString().split('T')[0], disabled: this.detalle }),
+            horadestino: new FormControl({ value: fechayhora_destino.toTimeString().split(' ')[0], disabled: this.detalle }),
+            finalizado: new FormControl({ value: data.finalizado, disabled: this.detalle }),
+            detalles: new FormControl({ value: data.detalles, disabled: this.detalle })
+          });
       } else {
         this.form=new FormGroup({
           codigo: new FormControl(data.id),
@@ -149,6 +151,10 @@ export class CreaeditahistorialnavegacionComponent implements OnInit{
       }
       })
     }
+  }
+  
+  volver(): void {
+    this.router.navigate(['historialnavegacion']);
   }
 }
 

@@ -129,6 +129,9 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id', component:CreaeditahistorialnavegacionComponent
+            },
+            {
+                path:'detalle/:id', component:CreaeditahistorialnavegacionComponent
             }
         ],
         canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno

@@ -1,101 +1,103 @@
 <div class="title-container">
-    <h1>{{ edicion ? 'Editar Historial' : 'Registrar Historial' }}</h1>
-  </div>
-  <div class="form-container">
-    <form [formGroup]="form" (ngSubmit)="aceptar()">
+  <h1>{{ edicion ? (detalle ? 'Detalle del Historial' : 'Editar Historial') : 'Registrar Historial' }}</h1>
+</div>
+<div class="form-container">
+  <form [formGroup]="form" (ngSubmit)="aceptar()">
 
-      <!-- Código (solo en edición) -->
-      <mat-form-field *ngIf="edicion">
-        <mat-label>Código</mat-label>
-        <input matInput formControlName="codigo" readonly/>
-      </mat-form-field>
-      <br />
-    
-      <!-- Usuario -->
-      <mat-form-field>
-        <mat-label>Usuario</mat-label>
-        <mat-select formControlName="user_id" required>
-          <mat-option *ngFor="let usuario of usuarios" [value]="usuario.idUsuario">
-            {{ usuario.email }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.get('user_id')?.hasError('required')">
-          El usuario es obligatorio.
-        </mat-error>
-      </mat-form-field>
-      <br />
+    <!-- Código (solo en edición) -->
+    <mat-form-field *ngIf="edicion">
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="codigo" readonly/>
+    </mat-form-field>
+    <br />
 
-      <!-- rutas_seguras -->
-      <mat-form-field>
-        <mat-label>Ruta</mat-label>
-        <mat-select formControlName="rutas_seguras_id" required>
-          <mat-option *ngFor="let rutas of Rutas_seguras" [value]="rutas.id">{{rutas.descripcion}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.get('rutas_seguras_id')?.hasError('required')">
-          La ruta es un campo obligatorio
-        </mat-error>
-      </mat-form-field>
-      <br />
+    <!-- Usuario -->
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="user_id" required [disabled]="detalle">
+        <mat-option *ngFor="let usuario of usuarios" [value]="usuario.idUsuario">
+          {{ usuario.email }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('user_id')?.hasError('required')">
+        El usuario es obligatorio.
+      </mat-error>
+    </mat-form-field>
+    <br />
+
+    <!-- Rutas Seguras -->
+    <mat-form-field>
+      <mat-label>Ruta</mat-label>
+      <mat-select formControlName="rutas_seguras_id" required [disabled]="detalle">
+        <mat-option *ngFor="let rutas of Rutas_seguras" [value]="rutas.id">
+          {{ rutas.descripcion }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('rutas_seguras_id')?.hasError('required')">
+        La ruta es un campo obligatorio.
+      </mat-error>
+    </mat-form-field>
+    <br />
 
     <!-- Fechayhora_inicio -->
-      <mat-form-field appearance="fill" class="example-full-width">
-        <input matInput placeholder="Ingrese fecha de inicio" [matDatepicker]="pickerInicio" formControlName="fechainicio" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
-        <mat-datepicker #pickerInicio></mat-datepicker>
-        <mat-error *ngIf="form.get('fechayhora_inicio')?.hasError('required')">La fecha de inicio es obligatoria.</mat-error>
-      </mat-form-field>
-      <br />
-      <mat-form-field appearance="fill" class="example-full-width">
-        <input matInput placeholder="Ingrese hora" formControlName="horainicio" />
-        <mat-hint>HH:MM</mat-hint>
-        <mat-error *ngIf="form.get('horainicio')?.hasError('required')">La hora es obligatoria.</mat-error>
-      </mat-form-field>
-      <br />
+    <mat-form-field appearance="fill" class="example-full-width">
+      <input matInput placeholder="Ingrese fecha de inicio" [matDatepicker]="pickerInicio" formControlName="fechainicio" [disabled]="detalle"/>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+      <mat-error *ngIf="form.get('fechainicio')?.hasError('required')">La fecha de inicio es obligatoria.</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill" class="example-full-width">
+      <input matInput placeholder="Ingrese hora" formControlName="horainicio" [disabled]="detalle"/>
+      <mat-hint>HH:MM</mat-hint>
+      <mat-error *ngIf="form.get('horainicio')?.hasError('required')">La hora es obligatoria.</mat-error>
+    </mat-form-field>
+    <br />
 
-      <!-- Fechayhora_destino -->
-      <mat-form-field appearance="fill" class="example-full-width">
-        <input matInput placeholder="Ingrese fecha de destino" [matDatepicker]="pickerDestino" formControlName="fechadestino" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="pickerDestino"></mat-datepicker-toggle>
-        <mat-datepicker #pickerDestino></mat-datepicker>
-        <mat-error *ngIf="form.get('fechayhora_destino')?.hasError('required')">La fecha de destino es obligatoria.</mat-error>
-      </mat-form-field>
-      <br />
-      <mat-form-field appearance="fill" class="example-full-width">
-        <input matInput placeholder="Ingrese hora" formControlName="horadestino" />
-        <mat-hint>HH:MM</mat-hint>
-        <mat-error *ngIf="form.get('horadestino')?.hasError('required')">La hora es obligatoria.</mat-error>
-      </mat-form-field>
-      <br />
-      <!-- Finalizado -->
-      <mat-form-field>
-        <mat-label>Estado</mat-label>
-        <mat-select formControlName="finalizado">
-            <mat-option [value]="true">Habilitado</mat-option>
-            <mat-option [value]="false">No Habilitado</mat-option>
-          </mat-select>
-          <mat-error *ngIf="form.get('finalizado')?.hasError('required')">
-            El estado es obligatorio.
-          </mat-error>
-      </mat-form-field>
-      <br />
+    <!-- Fechayhora_destino -->
+    <mat-form-field appearance="fill" class="example-full-width">
+      <input matInput placeholder="Ingrese fecha de destino" [matDatepicker]="pickerDestino" formControlName="fechadestino" [disabled]="detalle"/>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="pickerDestino"></mat-datepicker-toggle>
+      <mat-datepicker #pickerDestino></mat-datepicker>
+      <mat-error *ngIf="form.get('fechadestino')?.hasError('required')">La fecha de destino es obligatoria.</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill" class="example-full-width">
+      <input matInput placeholder="Ingrese hora" formControlName="horadestino" [disabled]="detalle"/>
+      <mat-hint>HH:MM</mat-hint>
+      <mat-error *ngIf="form.get('horadestino')?.hasError('required')">La hora es obligatoria.</mat-error>
+    </mat-form-field>
+    <br />
 
-          <!-- Contenido -->
-          <mat-form-field>
-            <mat-label>Detalle</mat-label>
-            <input matInput formControlName="detalles" required/>
-            <mat-error *ngIf="form.get('detalles')?.hasError('required')">
-              El campo Detalles es obligatorio.
-            </mat-error>
-          </mat-form-field>
-          <br />
-  
-      <!-- Botón Aceptar -->
-      <div class="button-container">
-        <button mat-raised-button color="primary">Aceptar</button>
-      </div>
-    </form>
-  </div>
+    <!-- Finalizado -->
+    <mat-form-field>
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="finalizado" [disabled]="detalle">
+        <mat-option [value]="true">Habilitado</mat-option>
+        <mat-option [value]="false">No Habilitado</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('finalizado')?.hasError('required')">
+        El estado es obligatorio.
+      </mat-error>
+    </mat-form-field>
+    <br />
 
+    <!-- Detalles -->
+    <mat-form-field>
+      <mat-label>Detalle</mat-label>
+      <input matInput formControlName="detalles" required [disabled]="detalle"/>
+      <mat-error *ngIf="form.get('detalles')?.hasError('required')">
+        El campo Detalles es obligatorio.
+      </mat-error>
+    </mat-form-field>
+    <br />
+
+    <!-- Botones -->
+    <div class="button-container">
+      <button *ngIf="!detalle" mat-raised-button color="primary" type="submit">Aceptar</button>
+      <button mat-raised-button color="warn" (click)="volver()">Volver</button>
+    </div>
+  </form>
+</div>
