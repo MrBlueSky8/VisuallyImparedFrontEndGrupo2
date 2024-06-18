@@ -64,7 +64,7 @@
     <br />
 
     <!-- Contraseña -->
-    <mat-form-field>
+    <mat-form-field *ngIf="!detalle">
       <mat-label>Contraseña</mat-label>
       <input matInput formControlName="password" type="password" [readonly]="detalle"/>
       <mat-error *ngIf="form.get('password')?.hasError('required')">

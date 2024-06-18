@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-creaeditausuario',
@@ -71,7 +72,14 @@ export class CreaeditausuarioComponent implements OnInit{
       this.usuario.genero = this.form.value.genero;
       this.usuario.email = this.form.value.email;
       this.usuario.ultima_ubicacion = this.form.value.ultima_ubicacion;
-      this.usuario.password = this.form.value.password;
+
+      if (this.form.value.password) {
+        const salt = bcrypt.genSaltSync(10);
+        const hashedPassword = bcrypt.hashSync(this.form.value.password, salt);
+        this.usuario.password = hashedPassword;
+      }
+
+
       this.usuario.enabled = this.form.value.enabled;
       if(this.edicion){
           this.uS.update(this.usuario).subscribe((data) => {
