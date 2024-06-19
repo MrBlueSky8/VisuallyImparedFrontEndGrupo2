@@ -15,7 +15,7 @@ export class ValoracionpromediorutasComponent {
     responsive:true,
   };
   barChartLables:string[]=[];
-  barChartType: ChartType='pie';
+  barChartType: ChartType='doughnut';
   barChartLegend=true;
   barChartData: ChartDataset[]=[];
 
