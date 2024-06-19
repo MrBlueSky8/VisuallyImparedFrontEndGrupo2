@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Eventos } from '../models/eventos';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { EventosxVenirDTO } from '../models/eventosxvenirDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,10 @@ export class EventosService {
   }
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  getEventosxVenir(): Observable<EventosxVenirDTO[]> {
+    return this.http.get<EventosxVenirDTO[]>(
+      `${this.url}/eventosproximos`
+    );
   }
 }

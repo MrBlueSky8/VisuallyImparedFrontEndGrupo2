@@ -26,6 +26,9 @@
   <!-- Menú de Comentarios Valoraciones Rutas -->
   <button mat-button [matMenuTriggerFor]="menuCValoracionRutas"><mat-icon>feedback</mat-icon>Comentarios/Valoraciones Rutas</button>
 
+  <!-- Menú de Reportes -->
+  <button mat-button [matMenuTriggerFor]="menuReportes"><mat-icon>insert_drive_file</mat-icon>Reportes</button>
+
   <!-- Menú de Cerrar sesion -->
   <button mat-button [matMenuTriggerFor]="menuSalir">Sesion</button>
 
@@ -87,6 +90,12 @@
 <mat-menu #menuCValoracionRutas="matMenu">
   <button mat-menu-item routerLink="/comentariosvaloracionesrutas/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
   <button mat-menu-item routerLink="/comentariosvaloracionesrutas"><mat-icon>list</mat-icon>Listar</button>
+</mat-menu>
+
+<!-- Menú de Reportes -->
+<mat-menu #menuReportes="matMenu">
+  <button mat-menu-item routerLink="/reportes">Eventos por venir</button>
+  <button mat-menu-item routerLink="/reportes/reporte02">Notificaciones sin leer</button>
 </mat-menu>
 
 <!-- Menú de Cerrar Login -->

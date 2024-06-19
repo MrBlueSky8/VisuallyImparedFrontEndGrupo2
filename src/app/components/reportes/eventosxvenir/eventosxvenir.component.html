@@ -1,0 +1,24 @@
+<div class="title-container">
+    <h1>Eventos Próximos</h1>
+  </div>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID Evento</th>
+          <th>Tipo de Evento</th>
+          <th>Descripción</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evento of eventos">
+          <td>{{ evento.idEvento }}</td>
+          <td>{{ evento.tipo_de_evento }}</td>
+          <td>{{ evento.descripcion }}</td>
+          <td>{{ evento.fecha | date: 'yyyy-MM-dd' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

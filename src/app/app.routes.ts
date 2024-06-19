@@ -20,6 +20,8 @@ import { segGuard } from "./guard/seguridad.guard";
 import { HomeComponent } from "./components/home/home.component";
 import { ComentariosvaloracionesrutasComponent } from "./components/comentariosvaloracionesrutas/comentariosvaloracionesrutas.component";
 import { CreaeditacomentariosvaloracionesrutasComponent } from "./components/comentariosvaloracionesrutas/creaeditacomentariosvaloracionesrutas/creaeditacomentariosvaloracionesrutas.component";
+import { ReportesComponent } from "./components/reportes/reportes.component";
+import { NotificacionesinleerComponent } from "./components/reportes/notificacionesinleer/notificacionesinleer.component";
 
 
 export const routes: Routes = [
@@ -152,6 +154,17 @@ export const routes: Routes = [
             }   
         ],
         canActivate: [segGuard], // solo construcciones, se debe agregar a cada uno
+    },
+    {
+      path: 'reportes',
+      component: ReportesComponent, //eventosxvenir
+      children: [
+        {
+          path: 'reporte02',
+          component: NotificacionesinleerComponent, 
+        },
+      ],
+      canActivate: [segGuard],
     },
     {
       path: 'homes',
