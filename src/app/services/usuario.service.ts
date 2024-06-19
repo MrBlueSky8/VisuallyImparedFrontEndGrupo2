@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Usuario } from '../models/usuario';
 import { HttpClient } from '@angular/common/http';
+import { CantidadporGeneroDTO } from '../models/cantidadporgeneroDTO';
 
 const base_url = environment.base;
 
@@ -35,5 +36,10 @@ export class UsuarioService {
   }
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  getQuantity():Observable<CantidadporGeneroDTO[]>{
+    return this.http.get<CantidadporGeneroDTO[]>(
+      `${this.url}/usuariosxgenero`
+    );
   }
 }

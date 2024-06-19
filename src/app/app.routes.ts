@@ -22,6 +22,8 @@ import { ComentariosvaloracionesrutasComponent } from "./components/comentariosv
 import { CreaeditacomentariosvaloracionesrutasComponent } from "./components/comentariosvaloracionesrutas/creaeditacomentariosvaloracionesrutas/creaeditacomentariosvaloracionesrutas.component";
 import { ReportesComponent } from "./components/reportes/reportes.component";
 import { NotificacionesinleerComponent } from "./components/reportes/notificacionesinleer/notificacionesinleer.component";
+import { UsuarioxgeneroComponent } from "./components/reportes/usuarioxgenero/usuarioxgenero.component";
+import { ValoracionpromediorutasComponent } from "./components/reportes/valoracionpromediorutas/valoracionpromediorutas.component";
 
 
 export const routes: Routes = [
@@ -162,6 +164,14 @@ export const routes: Routes = [
         {
           path: 'reporte02',
           component: NotificacionesinleerComponent, 
+        },
+        {
+            path: 'reporte03',
+            component: UsuarioxgeneroComponent, 
+        },
+        {
+            path: 'reporte04',
+            component: ValoracionpromediorutasComponent, 
         },
       ],
       canActivate: [segGuard],

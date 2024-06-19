@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ComentariosValoracionesRutas } from '../models/comentariosvaloracionesrutas';
 import { HttpClient } from '@angular/common/http';
+import { ValoracionpromedioRutasDTO } from '../models/valoracionpromedioRutasDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -33,5 +34,10 @@ export class ComentariosvaloracionesrutasService {
   }
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  getQuantity():Observable<ValoracionpromedioRutasDTO[]>{
+    return this.http.get<ValoracionpromedioRutasDTO[]>(
+      `${this.url}/rutaspromediovaloracion`
+    );
   }
 }
