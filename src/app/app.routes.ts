@@ -26,6 +26,8 @@ import { UsuarioxgeneroComponent } from "./components/reportes/usuarioxgenero/us
 import { ValoracionpromediorutasComponent } from "./components/reportes/valoracionpromediorutas/valoracionpromediorutas.component";
 import { EventospasadosbytipoComponent } from "./components/reportes/eventospasadosbytipo/eventospasadosbytipo.component";
 import { TiempopromedioxrutaComponent } from "./components/reportes/tiempopromedioxruta/tiempopromedioxruta.component";
+import { CantidadrutasxperiodoComponent } from "./components/reportes/cantidadrutasxperiodo/cantidadrutasxperiodo.component";
+import { NotificacionesxtipoComponent } from "./components/reportes/notificacionesxtipo/notificacionesxtipo.component";
 
 
 export const routes: Routes = [
@@ -182,6 +184,14 @@ export const routes: Routes = [
         {
             path: 'reporte06',
             component: TiempopromedioxrutaComponent, 
+        },
+        {
+            path: 'reporte07',
+            component: CantidadrutasxperiodoComponent, 
+        },
+        {
+            path: 'reporte08',
+            component: NotificacionesxtipoComponent, 
         },
       ],
       canActivate: [segGuard],
