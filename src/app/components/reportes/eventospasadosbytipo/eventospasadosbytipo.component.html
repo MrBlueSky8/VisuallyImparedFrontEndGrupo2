@@ -1,1 +1,16 @@
-<p>eventospasadosbytipo works!</p>
+<div class="title-container">
+    <div stryle="text-align: center" class="title">
+        <h1>Eventos pasados por Tipo</h1>
+    </div>
+    <div stryle="text-align: center" class="chart-container">
+        <canvas
+            baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLables"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [type]="barChartType"
+        >
+        </canvas>
+  </div>
+</div>

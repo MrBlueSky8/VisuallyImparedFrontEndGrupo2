@@ -1,115 +1,117 @@
 <mat-toolbar color="primary" *ngIf="verificar()">
-   <!-- Menú de Usuarios -->
-  <button mat-button [matMenuTriggerFor]="menuUsuario" *ngIf="isAdmin()"><mat-icon>person</mat-icon>Usuario</button>  
+  <!-- Menú de Usuarios -->
+ <button mat-button [matMenuTriggerFor]="menuUsuario" *ngIf="isAdmin()"><mat-icon>person</mat-icon>Usuario</button>  
 
-  <!-- Menú de Rutas Seguras -->
-  <button mat-button [matMenuTriggerFor]="menuRutasSeguras"><mat-icon>security</mat-icon>Rutas Seguras</button>
+ <!-- Menú de Rutas Seguras -->
+ <button mat-button [matMenuTriggerFor]="menuRutasSeguras"><mat-icon>security</mat-icon>Rutas Seguras</button>
 
-  <!-- Menú de Tipos de Evento -->
-  <button mat-button [matMenuTriggerFor]="menuTiposEvento" *ngIf="isAdmin()"><mat-icon>alarm</mat-icon>Tipos de Eventos</button>
+ <!-- Menú de Tipos de Evento -->
+ <button mat-button [matMenuTriggerFor]="menuTiposEvento" *ngIf="isAdmin()"><mat-icon>alarm</mat-icon>Tipos de Eventos</button>
 
-  <!-- Menú de Tipos de Notificaciones -->
-  <button mat-button [matMenuTriggerFor]="menuTiposNotificacion" *ngIf="isAdmin()"><mat-icon>notifications</mat-icon>Tipos de Notificaciones</button>
+ <!-- Menú de Tipos de Notificaciones -->
+ <button mat-button [matMenuTriggerFor]="menuTiposNotificacion" *ngIf="isAdmin()"><mat-icon>notifications</mat-icon>Tipos de Notificaciones</button>
 
-  <!-- Menú de Tipos de Usuario -->
-  <button mat-button [matMenuTriggerFor]="menuTiposdeUsuario" *ngIf="isAdmin()"><mat-icon>fingerprint</mat-icon>Tipos de Usuario</button>
+ <!-- Menú de Tipos de Usuario -->
+ <button mat-button [matMenuTriggerFor]="menuTiposdeUsuario" *ngIf="isAdmin()"><mat-icon>fingerprint</mat-icon>Tipos de Usuario</button>
 
-  <!-- Menú de Eventos -->
-  <button mat-button [matMenuTriggerFor]="menuEventos"><mat-icon>event</mat-icon>Eventos</button>
+ <!-- Menú de Eventos -->
+ <button mat-button [matMenuTriggerFor]="menuEventos"><mat-icon>event</mat-icon>Eventos</button>
 
-  <!-- Menú de Notificaciones -->
-  <button mat-button [matMenuTriggerFor]="menuNotificaciones"><mat-icon>notifications</mat-icon>Notificaciones</button>
-  
-  <!-- Menú de Historial de Navegacion -->
-  <button mat-button [matMenuTriggerFor]="menuHistorial"><mat-icon>history</mat-icon>Historial de Navegacion</button>
+ <!-- Menú de Notificaciones -->
+ <button mat-button [matMenuTriggerFor]="menuNotificaciones"><mat-icon>notifications</mat-icon>Notificaciones</button>
+ 
+ <!-- Menú de Historial de Navegacion -->
+ <button mat-button [matMenuTriggerFor]="menuHistorial"><mat-icon>history</mat-icon>Historial de Navegacion</button>
 
-  <!-- Menú de Comentarios Valoraciones Rutas -->
-  <button mat-button [matMenuTriggerFor]="menuCValoracionRutas"><mat-icon>feedback</mat-icon>Comentarios/Valoraciones Rutas</button>
+ <!-- Menú de Comentarios Valoraciones Rutas -->
+ <button mat-button [matMenuTriggerFor]="menuCValoracionRutas"><mat-icon>feedback</mat-icon>Comentarios/Valoraciones Rutas</button>
 
-  <!-- Menú de Reportes -->
-  <button mat-button [matMenuTriggerFor]="menuReportes"><mat-icon>insert_drive_file</mat-icon>Reportes</button>
+ <!-- Menú de Reportes -->
+ <button mat-button [matMenuTriggerFor]="menuReportes"><mat-icon>insert_drive_file</mat-icon>Reportes</button>
 
-  <!-- Menú de Cerrar sesion -->
-  <button mat-button [matMenuTriggerFor]="menuSalir">Sesion</button>
+ <!-- Menú de Cerrar sesion -->
+ <button mat-button [matMenuTriggerFor]="menuSalir">Sesion</button>
 
 
 
-  <!-- Botón Home -->
-  <button mat-button routerLink="/homes"><mat-icon>home</mat-icon>Home</button>
+ <!-- Botón Home -->
+ <button mat-button routerLink="/homes"><mat-icon>home</mat-icon>Home</button>
 </mat-toolbar>
 
 <!-- Menú de Usuario -->
 <mat-menu #menuUsuario="matMenu">
-  <button mat-menu-item routerLink="/usuarios/nuevo"><mat-icon>person_add</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/usuarios"><mat-icon>list</mat-icon>Listar</button>
+ <button mat-menu-item routerLink="/usuarios/nuevo"><mat-icon>person_add</mat-icon>Registrar</button>
+ <button mat-menu-item routerLink="/usuarios"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <!-- Menú de Rutas Seguras -->
 <mat-menu #menuRutasSeguras="matMenu">
-  <button mat-menu-item routerLink="/rutasseguras/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/rutasseguras"><mat-icon>list</mat-icon>Listar</button>
+ <button mat-menu-item routerLink="/rutasseguras/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+ <button mat-menu-item routerLink="/rutasseguras"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <!-- Menú de Tipos de Eventos -->
 <mat-menu #menuTiposEvento="matMenu">
-  <button mat-menu-item routerLink="/tiposdeevento/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/tiposdeevento"><mat-icon>list</mat-icon>Listar</button>
+ <button mat-menu-item routerLink="/tiposdeevento/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+ <button mat-menu-item routerLink="/tiposdeevento"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <!-- Menú de Tipos de Notificaciones -->
 <mat-menu #menuTiposNotificacion="matMenu">
-  <button mat-menu-item routerLink="/tiposdenotificacion/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/tiposdenotificacion"><mat-icon>list</mat-icon>Listar</button>
+ <button mat-menu-item routerLink="/tiposdenotificacion/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+ <button mat-menu-item routerLink="/tiposdenotificacion"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <!-- Menú de Tipos de Usuario -->
 <mat-menu #menuTiposdeUsuario="matMenu">
-  <button mat-menu-item routerLink="/tiposdeusuario/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/tiposdeusuario"><mat-icon>list</mat-icon>Listar</button>
+ <button mat-menu-item routerLink="/tiposdeusuario/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+ <button mat-menu-item routerLink="/tiposdeusuario"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <!-- Menú de Eventos -->
 <mat-menu #menuEventos="matMenu">
-  <button mat-menu-item routerLink="/eventos/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/eventos"><mat-icon>list</mat-icon>Listar</button>
+ <button mat-menu-item routerLink="/eventos/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+ <button mat-menu-item routerLink="/eventos"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <!-- Menú de Notificaciones -->
 <mat-menu #menuNotificaciones="matMenu">
-  <button mat-menu-item routerLink="/notificaciones/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/notificaciones"><mat-icon>list</mat-icon>Listar</button>
+ <button mat-menu-item routerLink="/notificaciones/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+ <button mat-menu-item routerLink="/notificaciones"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <!-- Menú de Historial -->
 <mat-menu #menuHistorial="matMenu">
-  <button mat-menu-item routerLink="/historialnavegacion/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/historialnavegacion"><mat-icon>list</mat-icon>Listar</button>
+ <button mat-menu-item routerLink="/historialnavegacion/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+ <button mat-menu-item routerLink="/historialnavegacion"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <!-- Menú de Comentarios Valoraciones Rutas -->
 <mat-menu #menuCValoracionRutas="matMenu">
-  <button mat-menu-item routerLink="/comentariosvaloracionesrutas/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="/comentariosvaloracionesrutas"><mat-icon>list</mat-icon>Listar</button>
+ <button mat-menu-item routerLink="/comentariosvaloracionesrutas/nuevo"><mat-icon>add_circle</mat-icon>Registrar</button>
+ <button mat-menu-item routerLink="/comentariosvaloracionesrutas"><mat-icon>list</mat-icon>Listar</button>
 </mat-menu>
 
 <!-- Menú de Reportes -->
 <mat-menu #menuReportes="matMenu">
-  <button mat-menu-item routerLink="/reportes">Eventos por venir</button>
-  <button mat-menu-item routerLink="/reportes/reporte02">Notificaciones sin leer</button>
-  <button mat-menu-item routerLink="/reportes/reporte03">Cantidad de usuarios por Género</button>
-  <button mat-menu-item routerLink="/reportes/reporte04">Valoración por Rutas</button>
+ <button mat-menu-item routerLink="/reportes">Eventos por venir</button>
+ <button mat-menu-item routerLink="/reportes/reporte02">Notificaciones sin leer</button>
+ <button mat-menu-item routerLink="/reportes/reporte03">Cantidad de usuarios por Género</button>
+ <button mat-menu-item routerLink="/reportes/reporte04">Valoración por Rutas</button>
+ <button mat-menu-item routerLink="/reportes/reporte05">Eventos pasados por Tipo</button>
+ <button mat-menu-item routerLink="/reportes/reporte06">Tiempo promedio por Rutas</button>
 </mat-menu>
 
 <!-- Menú de Cerrar Login -->
 <mat-menu #menuSalir="matMenu">
-  <button mat-menu-item routerLink="/login" (click)="cerrar()">
-    <mat-icon>logout</mat-icon>
-    <span>Cerrar sesión</span>
-  </button>
-  <button mat-menu-item>
-    Rol:
-    <span>{{ role }}</span>
-  </button>
+ <button mat-menu-item routerLink="/login" (click)="cerrar()">
+   <mat-icon>logout</mat-icon>
+   <span>Cerrar sesión</span>
+ </button>
+ <button mat-menu-item>
+   Rol:
+   <span>{{ role }}</span>
+ </button>
 </mat-menu>
 
 <router-outlet></router-outlet>

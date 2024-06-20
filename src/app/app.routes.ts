@@ -24,6 +24,8 @@ import { ReportesComponent } from "./components/reportes/reportes.component";
 import { NotificacionesinleerComponent } from "./components/reportes/notificacionesinleer/notificacionesinleer.component";
 import { UsuarioxgeneroComponent } from "./components/reportes/usuarioxgenero/usuarioxgenero.component";
 import { ValoracionpromediorutasComponent } from "./components/reportes/valoracionpromediorutas/valoracionpromediorutas.component";
+import { EventospasadosbytipoComponent } from "./components/reportes/eventospasadosbytipo/eventospasadosbytipo.component";
+import { TiempopromedioxrutaComponent } from "./components/reportes/tiempopromedioxruta/tiempopromedioxruta.component";
 
 
 export const routes: Routes = [
@@ -172,6 +174,14 @@ export const routes: Routes = [
         {
             path: 'reporte04',
             component: ValoracionpromediorutasComponent, 
+        },
+        {
+            path: 'reporte05',
+            component: EventospasadosbytipoComponent, 
+        },
+        {
+            path: 'reporte06',
+            component: TiempopromedioxrutaComponent, 
         },
       ],
       canActivate: [segGuard],

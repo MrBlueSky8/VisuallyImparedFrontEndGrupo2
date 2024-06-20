@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { RutasSeguras } from '../models/rutasseguras';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { RutaSeguraTiempoPromedioDTO } from '../models/rutaSeguraTiempoPromedioDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -33,5 +34,10 @@ export class RutassegurasService {
   }
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  gettiempoxruta(): Observable<RutaSeguraTiempoPromedioDTO[]> {
+    return this.http.get<RutaSeguraTiempoPromedioDTO[]>(
+      `${this.url}/tiempopromedioxruta`
+    );
   }
 }
