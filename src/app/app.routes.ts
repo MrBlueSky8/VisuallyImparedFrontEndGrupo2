@@ -28,6 +28,8 @@ import { EventospasadosbytipoComponent } from "./components/reportes/eventospasa
 import { TiempopromedioxrutaComponent } from "./components/reportes/tiempopromedioxruta/tiempopromedioxruta.component";
 import { CantidadrutasxperiodoComponent } from "./components/reportes/cantidadrutasxperiodo/cantidadrutasxperiodo.component";
 import { NotificacionesxtipoComponent } from "./components/reportes/notificacionesxtipo/notificacionesxtipo.component";
+import { RutasmasviajadasComponent } from "./components/reportes/rutasmasviajadas/rutasmasviajadas.component";
+import { RutasmenordistanciaingresadaComponent } from "./components/reportes/rutasmenordistanciaingresada/rutasmenordistanciaingresada.component";
 
 
 export const routes: Routes = [
@@ -192,6 +194,14 @@ export const routes: Routes = [
         {
             path: 'reporte08',
             component: NotificacionesxtipoComponent, 
+        },
+        {
+            path: 'reporte09',
+            component: RutasmasviajadasComponent, 
+        },
+        {
+            path: 'reporte10',
+            component: RutasmenordistanciaingresadaComponent, 
         },
       ],
       canActivate: [segGuard],

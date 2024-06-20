@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { HistorialNavegacion } from '../models/historialnavegacion';
 import { CantidadRutasXPeriodoDTO } from '../models/cantidadRutasXPeriodoDTO';
+import { RutasMasViajadasDTO } from '../models/rutasmasviajadasDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -38,4 +39,10 @@ export class HistorialnavegacionService {
   getCantidadRutasXPeriodoDTO():Observable<CantidadRutasXPeriodoDTO[]>{
     return this.http.get<CantidadRutasXPeriodoDTO[]>(`${this.url}/cantidadrutasporperiodo`);
   }
+  getRutasMasViajadas(): Observable<RutasMasViajadasDTO[]> {
+    return this.http.get<RutasMasViajadasDTO[]>(
+      `${this.url}/rutamasviajadas`
+    );
+  }
+
 }
