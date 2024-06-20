@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HistorialNavegacion } from '../models/historialnavegacion';
+import { CantidadRutasXPeriodoDTO } from '../models/cantidadRutasXPeriodoDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -33,5 +34,8 @@ export class HistorialnavegacionService {
   }
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  getCantidadRutasXPeriodoDTO():Observable<CantidadRutasXPeriodoDTO[]>{
+    return this.http.get<CantidadRutasXPeriodoDTO[]>(`${this.url}/cantidadrutasporperiodo`);
   }
 }
