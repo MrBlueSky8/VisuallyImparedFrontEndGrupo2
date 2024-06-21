@@ -1,1 +1,30 @@
-<p>rutasmenordistanciaingresada works!</p>
+<div class="title-container">
+    <div style="text-align: center" class="title">
+      <h1>Rutas Seguras con Distancia Menor a la Ingresada</h1>
+    </div>
+    <div style="text-align: center" class="form-container">
+      <form [formGroup]="form" (ngSubmit)="getRutas()">
+        <mat-form-field>
+          <mat-label>Distancia</mat-label>
+          <input matInput formControlName="distancia" type="number" required />
+          <mat-error *ngIf="form.get('distancia')?.hasError('required')">
+            La distancia es obligatoria.
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Aceptar</button>
+      </form>
+    </div>
+    <div style="text-align: center" class="chart-container">
+      <!-- Gráfico de barras -->
+      <canvas
+        baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [type]="barChartType"
+      >
+      </canvas>
+    </div>
+  </div>
+  

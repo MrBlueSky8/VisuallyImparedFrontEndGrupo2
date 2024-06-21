@@ -8,6 +8,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { LoginService } from './services/login.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { LoginService } from './services/login.service';
     MatButtonModule,
     RouterLink,
     NgIf,
+    ReactiveFormsModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Notificaciones } from '../models/notificaciones';
 import { Observable, Subject } from 'rxjs';
 import { NotPorTipoDTO } from '../models/notPorTipoDTO';
+import { NotificacionesSinLeerDTO } from '../models/notificacionessinleerDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,10 @@ export class NotificacionesService {
   }
   getNotPorTipoDTO():Observable<NotPorTipoDTO[]>{
     return this.http.get<NotPorTipoDTO[]>(`${this.url}/notificacionesportipov2`);
+  }
+  getNotificacionesSinLeer(id_usuario:number): Observable<NotificacionesSinLeerDTO[]> {
+    return this.http.get<NotificacionesSinLeerDTO[]>(
+      `${this.url}/notificacionessinleer?id_usuario=${id_usuario}`
+    );
   }
 }

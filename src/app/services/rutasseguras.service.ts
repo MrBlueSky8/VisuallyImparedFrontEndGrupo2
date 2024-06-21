@@ -4,6 +4,7 @@ import { RutasSeguras } from '../models/rutasseguras';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { RutaSeguraTiempoPromedioDTO } from '../models/rutaSeguraTiempoPromedioDTO';
+import { RutasMenorDistanciaIngresadaDTO } from '../models/rutasmenordistanciaingresada';
 
 const base_url = environment.base;
 @Injectable({
@@ -38,6 +39,11 @@ export class RutassegurasService {
   gettiempoxruta(): Observable<RutaSeguraTiempoPromedioDTO[]> {
     return this.http.get<RutaSeguraTiempoPromedioDTO[]>(
       `${this.url}/tiempopromedioxruta`
+    );
+  }
+  getRutasMenorDistanciaIngresada(distancia:number): Observable<RutasMenorDistanciaIngresadaDTO[]> {
+    return this.http.get<RutasMenorDistanciaIngresadaDTO[]>(
+      `${this.url}/distancias_menores?distancia=${distancia}`
     );
   }
 }

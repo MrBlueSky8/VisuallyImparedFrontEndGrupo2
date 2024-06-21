@@ -28,7 +28,7 @@ export class RutasmasviajadasComponent implements OnInit {
 
   ngOnInit(): void {
     this.hnS.getRutasMasViajadas().subscribe((data) => {
-      this.barChartLabels = data.map((item) => item.id);
+      this.barChartLabels = data.map((item) => item.descripcion);
       this.barChartData = [
         {
           data: data.map((item) => item.ruta_mas_transitada),
