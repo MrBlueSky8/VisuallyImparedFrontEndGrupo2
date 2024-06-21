@@ -1,30 +1,91 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LoginService } from '../../services/login.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JwtRequest } from '../../models/jwtRequest';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../models/usuario';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatButtonModule, MatInputModule],
+  imports: [
+    FormsModule,
+    MatFormFieldModule, 
+    MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    CommonModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private uS:UsuarioService, private route: ActivatedRoute, private formBuilber: FormBuilder,
   ) {}
   username: string = '';
   password: string = '';
   mensaje: string = '';
-  ngOnInit(): void {}
+  form: FormGroup = new FormGroup({});
+  usuario: Usuario = new Usuario();
+  
+
+  ngOnInit(): void {
+    this.form = this.formBuilber.group({
+      codigo:[''],
+      nombre: ['', Validators.required],
+      apellido: [''],
+      genero: [''],
+      email: ['', Validators.required],
+      ultima_ubicacion: [''],
+      password: ['', Validators.required],
+      enabled: [''],
+    });
+  }
+  aceptar(): void {
+    if (this.form.valid) {
+      this.usuario.idUsuario = this.form.value.codigo;
+      this.usuario.nombre = this.form.value.nombre;
+      this.usuario.apellido = this.form.value.apellido;
+      this.usuario.genero = this.form.value.genero;
+      this.usuario.email = this.form.value.email;
+      this.usuario.ultima_ubicacion = this.form.value.ultima_ubicacion;
+
+      if (this.form.value.password) {
+        const salt = bcrypt.genSaltSync(10);
+        const hashedPassword = bcrypt.hashSync(this.form.value.password, salt);
+        this.usuario.password = hashedPassword;
+      }
+
+
+      this.usuario.enabled = true;
+      
+      this.uS.insert(this.usuario).subscribe((data) => {
+        this.uS.list().subscribe((data) => {
+          this.uS.setList(data);
+        });
+      });
+
+      this.router.navigate(['login']);
+    } else {
+      this.mensaje = 'Por favor complete todos los campos obligatorios.';
+      this.snackBar.open(this.mensaje, "Aviso",{duration:2000});
+
+    }
+  }
+
   login() {
     let request = new JwtRequest();
     request.username = this.username;

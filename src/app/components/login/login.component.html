@@ -1,23 +1,72 @@
-<div class="container" style="text-align: center">
-    <div>
-      <img src="assets/logo.png" alt="Logo de la empresa" >
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
+    <meta content="Start saving today" name="description">
+
+    <link rel="stylesheet" href="../../../assets/styles/login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="container">
+      <input type="checkbox" id="flip">
+      <div class="cover">
+        <div class="front">
+          <img src="../../../assets/img/login.jpg" alt="">
+        </div>
+      </div>
+      <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Login</div>
+              <div class="input-boxes">
+                <div class="input-box">
+                  <i class="fas fa-envelope"></i>
+                  <input matInput placeholder="Username" [(ngModel)]="username" />
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" matInput placeholder="Password" [(ngModel)]="password"/>
+                </div>
+                <div class="button input-box">
+                  <input type="submit" value="Login" (click)="login()" >
+                </div>
+                <div class="text sign-up-text">Don't have an account? <label for="flip">Sign Up Now</label></div>
+              </div>
+          </div>
+          <div class="signup-form">
+            <div class="title">Registration</div>
+            <form [formGroup]="form" id="register-form">
+              <div class="input-boxes">
+                <div class="input-box">
+                  <i class="fas fa-user"></i>
+                  <input type="text" id="register-name" placeholder="Enter your name" required autocomplete="off" formControlName="nombre">
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-envelope"></i>
+                  <input type="text" id="register-email" placeholder="Enter your email" required autocomplete="off" formControlName="email">
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" id="register-password" placeholder="Enter your password" required autocomplete="off" formControlName="password">
+                </div>
+
+                <div class="button input-box">
+                  <input type="submit" value="Register" (click)="aceptar()">
+                </div>
+                <div class="text sign-up-text">Already have an account? <label for="flip">Log In</label></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-    <h2>Inicie sesión</h2>
-    <mat-form-field class="example-full-width">
-      <mat-label>Usuario</mat-label>
-      <input matInput placeholder="Username" [(ngModel)]="username" />
-    </mat-form-field>
-    <br />
-    <mat-form-field class="example-full-width">
-      <mat-label>Password</mat-label>
-      <input
-        type="password"
-        matInput
-        placeholder="Password"
-        [(ngModel)]="password"
-      />
-    </mat-form-field>
-    <br />
-    <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
-  </div>
+
+    <script src="https://unpkg.com/sweetalert2@11"></script>
+    <script src="../../../assets/scripts/login.js"></script>
+  </body>
+</html>
