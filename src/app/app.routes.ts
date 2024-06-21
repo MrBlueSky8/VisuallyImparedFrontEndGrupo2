@@ -30,18 +30,23 @@ import { CantidadrutasxperiodoComponent } from "./components/reportes/cantidadru
 import { NotificacionesxtipoComponent } from "./components/reportes/notificacionesxtipo/notificacionesxtipo.component";
 import { RutasmasviajadasComponent } from "./components/reportes/rutasmasviajadas/rutasmasviajadas.component";
 import { RutasmenordistanciaingresadaComponent } from "./components/reportes/rutasmenordistanciaingresada/rutasmenordistanciaingresada.component";
+import { LandingPageComponent } from "./components/landing-page/landing-page.component";
 
 
 export const routes: Routes = [
 
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'landing',
         pathMatch: 'full',
     },
     {
         path: 'login',
         component: LoginComponent,
+    },
+    {
+        path: 'landing',
+        component: LandingPageComponent,
     },
     {
         path:'usuarios',component:UsuariosComponent,
