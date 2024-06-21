@@ -8,6 +8,9 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+
 
 @Component({
   selector: 'app-listarusuario',
@@ -19,7 +22,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatPaginatorModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    CommonModule,
+    MatCardModule
   ],
   templateUrl: './listarusuario.component.html',
   styleUrl: './listarusuario.component.css'
@@ -37,7 +42,7 @@ export class ListarusuarioComponent {
     'accion02'
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
+  usuarios: Usuario[] = [];
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
   constructor(private uS:UsuarioService) {}
   ngOnInit(): void {
