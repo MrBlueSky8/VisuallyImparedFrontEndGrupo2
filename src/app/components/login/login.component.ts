@@ -94,7 +94,6 @@ export class LoginComponent implements OnInit{
 
       
       sessionStorage.clear();
-      this.insertarrol(this.usrid);
 
       this.router.navigate(['login']).then(() => {
         window.location.reload();
@@ -142,12 +141,16 @@ export class LoginComponent implements OnInit{
     this.TiposdeUsuario.id = 0;
     this.TiposdeUsuario.rol = 'CUSTOMER';
     this.TiposdeUsuario.user.idUsuario = iduser;
-    //console.log('User ID TU:', this.TiposdeUsuario.user.idUsuario);
+    console.log('User ID TU:', this.TiposdeUsuario.user.idUsuario);
 
     this.tuS.insert(this.TiposdeUsuario).subscribe((data) => {
       this.tuS.list().subscribe((data) => {
         this.tuS.setList(data);
       });
+    },
+    (error) => {
+      this.mensaje = 'Insersicion Fallida!!!';
+      this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
     }
     );
   }
