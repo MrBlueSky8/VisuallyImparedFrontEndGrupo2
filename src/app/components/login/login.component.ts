@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/usuario';
 import * as bcrypt from 'bcryptjs';
+import { TiposdeusuarioService } from '../../services/tiposdeusuario.service';
+import { TiposdeUsuario } from '../../models/tiposdeusuario';
 
 @Component({
   selector: 'app-login',
@@ -34,12 +36,16 @@ export class LoginComponent implements OnInit{
     private router: Router,
     private snackBar: MatSnackBar,
     private uS:UsuarioService, private route: ActivatedRoute, private formBuilber: FormBuilder,
+    private tuS:TiposdeusuarioService
   ) {}
   username: string = '';
   password: string = '';
   mensaje: string = '';
   form: FormGroup = new FormGroup({});
   usuario: Usuario = new Usuario();
+
+  TiposdeUsuario: TiposdeUsuario = new TiposdeUsuario();
+  usrid:number = 0;
   
 
   ngOnInit(): void {
@@ -78,7 +84,22 @@ export class LoginComponent implements OnInit{
         });
       });
 
-      this.router.navigate(['login']);
+      this.logintemporal();
+
+      this.uS.findIdByEmail(this.form.value.email).subscribe((id) => {
+        this.usrid = id;
+        this.insertarrol(this.usrid);
+        console.log('User ID:', this.usrid); 
+      });
+
+      
+      sessionStorage.clear();
+      this.insertarrol(this.usrid);
+
+      this.router.navigate(['login']).then(() => {
+        window.location.reload();
+      });
+
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
       this.snackBar.open(this.mensaje, "Aviso",{duration:2000});
@@ -99,6 +120,35 @@ export class LoginComponent implements OnInit{
         this.mensaje = 'Credenciales incorrectas!!!';
         this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
       }
+    );
+  }
+  
+  logintemporal(){
+    let request = new JwtRequest();
+    request.username = 'fabriziovaldbeg2@gmail.com';
+    request.password = 'password123';
+    this.loginService.login(request).subscribe(
+      (data: any) => {
+        sessionStorage.setItem('token', data.jwttoken);
+      },
+      (error) => {
+        this.mensaje = 'Credenciales incorrectas!!!';
+        this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
+      }
+    );
+  }
+  insertarrol(iduser:number){
+
+    this.TiposdeUsuario.id = 0;
+    this.TiposdeUsuario.rol = 'CUSTOMER';
+    this.TiposdeUsuario.user.idUsuario = iduser;
+    //console.log('User ID TU:', this.TiposdeUsuario.user.idUsuario);
+
+    this.tuS.insert(this.TiposdeUsuario).subscribe((data) => {
+      this.tuS.list().subscribe((data) => {
+        this.tuS.setList(data);
+      });
+    }
     );
   }
 }

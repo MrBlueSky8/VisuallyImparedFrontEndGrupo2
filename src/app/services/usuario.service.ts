@@ -42,4 +42,8 @@ export class UsuarioService {
       `${this.url}/usuariosxgenero`
     );
   }
+
+  findIdByEmail(email: string): Observable<number> {
+    return this.http.get<number>(`${this.url}/findidbyemail?email=${email}`);
+  }
 }
