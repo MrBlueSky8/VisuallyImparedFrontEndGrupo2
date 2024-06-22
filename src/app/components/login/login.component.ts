@@ -91,9 +91,9 @@ export class LoginComponent implements OnInit{
       });
 
 
-      //this.router.navigate(['login']).then(() => {
-      //  window.location.reload();
-      //});
+      this.router.navigate(['login']).then(() => {
+        window.location.reload();
+      });
 
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
