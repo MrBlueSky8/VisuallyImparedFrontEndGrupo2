@@ -84,20 +84,16 @@ export class LoginComponent implements OnInit{
         });
       });
 
-      this.logintemporal();
-
       this.uS.findIdByEmail(this.form.value.email).subscribe((id) => {
         this.usrid = id;
         this.insertarrol(this.usrid);
         console.log('User ID:', this.usrid); 
       });
 
-      
-      sessionStorage.clear();
 
-      this.router.navigate(['login']).then(() => {
-        window.location.reload();
-      });
+      //this.router.navigate(['login']).then(() => {
+      //  window.location.reload();
+      //});
 
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
@@ -122,20 +118,6 @@ export class LoginComponent implements OnInit{
     );
   }
   
-  logintemporal(){
-    let request = new JwtRequest();
-    request.username = 'fabriziovaldbeg2@gmail.com';
-    request.password = 'password123';
-    this.loginService.login(request).subscribe(
-      (data: any) => {
-        sessionStorage.setItem('token', data.jwttoken);
-      },
-      (error) => {
-        this.mensaje = 'Credenciales incorrectas!!!';
-        this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
-      }
-    );
-  }
   insertarrol(iduser:number){
 
     this.TiposdeUsuario.id = 0;
