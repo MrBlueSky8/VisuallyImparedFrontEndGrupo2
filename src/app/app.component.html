@@ -1,5 +1,5 @@
 <!-- Barra de herramientas -->
-<mat-toolbar color="primary" *ngIf="verificar()">
+<mat-toolbar color="primary" *ngIf="verificar() && (role !== '' || cerrar())">
   <!-- Menú desplegable de todos los ítems -->
   <button mat-button [matMenuTriggerFor]="menuItems">
     <mat-icon>menu</mat-icon>Menú

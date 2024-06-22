@@ -61,6 +61,8 @@ export class LoginComponent implements OnInit{
     });
   }
   aceptar(): void {
+    sessionStorage.clear();
+    
     if (this.form.valid) {
       this.usuario.idUsuario = this.form.value.codigo;
       this.usuario.nombre = this.form.value.nombre;
