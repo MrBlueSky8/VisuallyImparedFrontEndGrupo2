@@ -46,4 +46,8 @@ export class UsuarioService {
   findIdByEmail(email: string): Observable<number> {
     return this.http.get<number>(`${this.url}/findidbyemail?email=${email}`);
   }
+
+  getUltimoIdRegistrado(): Observable<number> {
+    return this.http.get<number>(`${this.url}/ultimoidregistrado`);
+  }
 }
