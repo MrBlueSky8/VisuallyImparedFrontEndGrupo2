@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit{
     });
   }
   aceptar(): void {
-    sessionStorage.clear();
+    //sessionStorage.clear();
     
     if (this.form.valid) {
       this.usuario.idUsuario = this.form.value.codigo;
@@ -84,12 +84,13 @@ export class LoginComponent implements OnInit{
         this.uS.list().subscribe((data) => {
           this.uS.setList(data);
         });
-      });
 
-      this.uS.findIdByEmail(this.form.value.email).subscribe((id) => {
-        this.usrid = id;
-        this.insertarrol(this.usrid);
-        console.log('User ID:', this.usrid); 
+        this.uS.getUltimoIdRegistrado().subscribe((id) => {
+          this.usrid = id;
+          this.insertarrol(this.usrid);
+          console.log('User ID:', this.usrid); 
+        });
+        
       });
 
 
@@ -125,17 +126,8 @@ export class LoginComponent implements OnInit{
     this.TiposdeUsuario.id = 0;
     this.TiposdeUsuario.rol = 'CUSTOMER';
     this.TiposdeUsuario.user.idUsuario = iduser;
-    console.log('User ID TU:', this.TiposdeUsuario.user.idUsuario);
 
-    this.tuS.insert(this.TiposdeUsuario).subscribe((data) => {
-      this.tuS.list().subscribe((data) => {
-        this.tuS.setList(data);
-      });
-    },
-    (error) => {
-      this.mensaje = 'Insersicion Fallida!!!';
-      this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
-    }
-    );
+    this.tuS.insert(this.TiposdeUsuario).subscribe();
+    console.log('User ID TU:', this.TiposdeUsuario.user.idUsuario);
   }
 }
