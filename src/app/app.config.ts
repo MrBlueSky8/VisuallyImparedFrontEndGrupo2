@@ -7,6 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { environment } from '../environments/environment';
 export function tokenGetter() {
   return sessionStorage.getItem('token');
 }
@@ -22,8 +23,8 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,
-          allowedDomains: ['localhost:8083'],
-          disallowedRoutes: ['http://localhost:8083/landing/forget'],
+          allowedDomains: ['arqui-web-grupo-2.onrender.com'],
+          disallowedRoutes: ['https://arqui-web-grupo-2.onrender.com/landing/forget'],
         },
       })
     ), provideAnimationsAsync(),
