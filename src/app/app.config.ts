@@ -23,8 +23,8 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,
-          allowedDomains: ['arqui-web-grupo-2.onrender.com'],
-          disallowedRoutes: ['https://arqui-web-grupo-2.onrender.com/landing/forget'],
+          allowedDomains: ['localhost:8083'],
+          disallowedRoutes: ['http://localhost:8083/landing/forget'],
         },
       })
     ), provideAnimationsAsync(),

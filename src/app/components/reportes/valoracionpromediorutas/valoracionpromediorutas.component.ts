@@ -23,7 +23,7 @@ export class ValoracionpromediorutasComponent {
 
   ngOnInit(): void {
     this.cS.getQuantity().subscribe((data) => {
-      this.barChartLables = data.map(item=>item.descripcion);
+      this.barChartLables = data.map(item=>item.id.toString());
       this.barChartData=[
         {
           data:data.map(item=>item.valoracion_promedio),

@@ -181,7 +181,7 @@ export const routes: Routes = [
             component: UsuarioxgeneroComponent, 
         },
         {
-            path: 'reporte04',
+            path: 'mariafernanda',
             component: ValoracionpromediorutasComponent, 
         },
         {
